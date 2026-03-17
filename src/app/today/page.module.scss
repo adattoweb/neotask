@@ -1,0 +1,25 @@
+.today{
+    border-radius: var(--full-border-radius);
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 80px;
+}
+.header {
+    padding: 16px 0px;
+    font-weight: 600;
+    font-size: 28px;
+    font-family: var(--font-montserrat-alternates);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    * {
+        font-weight: 400 !important;
+    }
+}
+.list{
+    width: 100%;
+}

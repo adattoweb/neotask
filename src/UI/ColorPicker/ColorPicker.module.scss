@@ -1,0 +1,23 @@
+.picker__wrapper{
+   padding: 12px;
+   flex: 0 0 auto;
+   width: 300px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-radius: var(--md-border-radius);
+   gap: 12px;
+   box-sizing: border-box;
+}
+
+.picker{
+   width: 40px;
+   height: 40px;
+   border-radius: var(--sm-border-radius);
+   border: none;
+}
+.color{
+   font-family: var(--font-montserrat-alternates);
+   font-size: 16px;
+   font-weight: 500;
+}

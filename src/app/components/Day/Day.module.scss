@@ -1,0 +1,84 @@
+.day{
+    padding: 20px;
+    width: 400px;
+    height: 100%;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    box-sizing: border-box;
+    .header{
+        text-align: center;
+        .date{
+            font-family: var(--font-montserrat-alternates);
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .counter{
+            font-family: var(--font-montserrat-alternates);
+            color: #D8D8D8;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+}
+
+.date__wrapper{
+    display: flex;
+    width: 130px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 7px;
+}
+.chevron__left, .chevron__right{
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+.chevron__left{
+    transform: rotate(90deg);
+}
+.chevron__right{
+    transform: rotate(-90deg);
+}
+.date__button{
+    padding: 5px 10px;
+    border-radius: var(--full-border-radius);
+    font-family: var(--font-montserrat-alternates);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 1920px){
+    .day{
+        width: 370px;
+    }
+}
+@media screen and (max-width: 1920px){
+    .day{
+        width: 350px;
+    }
+}
+@media screen and (max-width: 1280px){
+    .day{
+        width: 330px;
+        .header .date{
+            font-size: 16px;
+        }
+    }
+}
+@media screen and (max-width: 1024px){
+    .day{
+        width: 300px;
+    }
+}
+@media screen and (max-width: 900px){
+    .day{
+        width: 280px;
+    }
+}
+@media screen and (max-width: 768px){
+    .day{
+        width: 100%;
+    }
+}

@@ -1,0 +1,74 @@
+.header{
+    text-align: center;
+    font-size: 24px;
+    font-family: var(--font-montserrat-alternates);
+    font-weight: 600;
+    padding: 6px 0px 12px 0px;
+}
+
+.analytics{
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.progress{
+    position: relative;
+    padding: 20px 0px 10px 0px;
+}
+.trophy__icon{
+    width: 64px;
+    height: 64px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px #fff solid;
+}
+.text__header{
+    font-size: 18px;
+    font-weight: 500;
+    font-family: var(--font-montserrat-alternates);
+    b {
+        font-weight: 600;
+    }
+    padding-bottom: 5px;
+}
+.description{
+    font-size: 16px;
+    color: #D3D3D3;
+    font-family: var(--font-montserrat-alternates);
+}
+.text__underline{
+    padding-top: 5px;
+    font-family: var(--font-montserrat-alternates);
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: 400;
+}
+.area{
+    padding-top: 20px;
+    width: 100%;
+    height: 300px;
+}
+
+.tooltip{
+    border-radius: var(--sm-border-radius);
+    padding: 6px 10px;
+}
+.tooltip__label{
+    font-family: var(--font-montserrat-alternates);
+    font-weight: 500;
+    font-size: 18px;
+    padding-bottom: 4px;
+}
+.tooltip__item{
+    font-size: 16px;
+    span{
+        font-weight: 500;
+    }
+}

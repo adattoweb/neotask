@@ -1,0 +1,51 @@
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.icon path {
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  transition: stroke-dashoffset 0.25s ease;
+}
+
+.input:checked + .box .icon path {
+  stroke-dashoffset: 0;
+}
+
+.text {
+  user-select: none;
+  font-family: var(--font-montserrat-alternates);
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.text svg{
+    width: 18px;
+    height: 18px;
+}
