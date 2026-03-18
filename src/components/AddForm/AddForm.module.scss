@@ -15,6 +15,14 @@
     }
 }
 
+@media screen and (max-width: 1024px){
+    .form {
+        .textarea{
+            height: 60px;
+        }
+    }
+}
+
 .parameters{
     display: flex;
     gap: 6px;

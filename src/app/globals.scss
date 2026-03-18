@@ -314,3 +314,13 @@ svg {
 .rdp-nav{
   width: 55px;
 }
+
+.page{
+  border-radius: var(--full-border-radius);
+  width: 100%;
+}
+@media screen and (max-width: 380px){
+  .page{
+    border-radius: 0px;
+  }
+}

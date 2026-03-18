@@ -10,7 +10,7 @@ const days = [0, 1, 2, 3, 4]
 export default function Calendar() {
    const [width] = useGetWidth()
    return (
-      <div className={`${styles.calendar} bg-alpha br-alpha`}>
+      <div className={`${styles.calendar} bg-alpha br-alpha page`}>
          {width === null || width > 768 ? (
             <>
                {days.map(el => <Day key={el} />)}
