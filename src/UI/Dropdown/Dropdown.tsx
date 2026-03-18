@@ -94,7 +94,6 @@ function Content({ children, className }:PropsWithChildren<WithClassName>){
     const [stylesPos, setStylesPos] = useState<React.CSSProperties>({})
     const currentRef = useRef<HTMLDivElement>(null)
 
-    // клієнтський mount
     useEffect(() => setMounted(true), [])
 
     useLayoutEffect(() => {
@@ -111,14 +110,15 @@ function Content({ children, className }:PropsWithChildren<WithClassName>){
         if (top + dropdownRect.height > window.innerHeight) top = rect.top - dropdownRect.height
         if (top < 0) top = 0
 
-        setStylesPos({ position: "fixed", left, top, zIndex: 9999 })
+        console.log(left, top)
+
+        setStylesPos({ left, top })
     }, [isOpen])
 
     const handleAnimationEnd = () => {
         if (!isOpen) setStylesPos({})
     }
 
-    // якщо ще не на клієнті, або не відкритий → нічого не рендеримо
     if (!mounted) return null
 
     return createPortal(

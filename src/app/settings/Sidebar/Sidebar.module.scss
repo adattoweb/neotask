@@ -62,3 +62,32 @@
         color: #d4d4d4;
     }
 }
+@media screen and (max-width: 768px){
+    .sidebar{
+        width: 80px;
+    }
+    .header{
+        display: none;
+    }
+    .return {
+        margin-bottom: 20px;
+        .return__text {
+            display: none;
+        }
+    }
+    .list{
+        gap: 16px;
+    }
+    .item {
+        padding: 0px;
+        border-radius: 1000px;
+        width: 42px;
+        height: 42px;
+        .name {
+            display: none
+        }
+        svg{
+            margin: auto;
+        }
+    }
+}

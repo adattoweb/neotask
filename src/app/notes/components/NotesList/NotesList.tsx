@@ -10,6 +10,7 @@ import taskStyles from "@/app/components/TaskList/TaskList.module.scss"
 import { useTranslation } from "@/hooks/useTranslation"
 import { useModalsStore } from "@/stores/useModalsStore"
 import { useNoteStore } from "@/stores/useNoteStore"
+import { ignoreClick } from "@/helpers/ignoreClick"
 
 export function Note(){
   const [isEdit, setIsEdit] = useState(false)
@@ -36,7 +37,7 @@ export function Note(){
       <div className={styles.content} >
         <h4 className={styles.name}>{data.title ?? "without title"}</h4>
         <p className={styles.description}>{data.text ?? "witout text"}</p>
-        <Footer>
+        <Footer onClick={ignoreClick}>
           <ProjectDropdown />
           <Menu>
             <Menu.Edit onClick={() => setIsEdit(true)} />

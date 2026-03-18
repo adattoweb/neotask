@@ -103,11 +103,17 @@
     &.without::before{
       backdrop-filter: none;
     }
+    &.without{
+      width: auto !important;
+    }
 }
 
 @media screen and (max-width: 768px){
   .wrapper .content{
     animation: ContentOut 0.5s ease forwards;
+    &.without {
+      animation: none;
+    }
   }
   .wrapper.close .content{
     animation: ContentIn 0.5s ease forwards;

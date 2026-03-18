@@ -9,7 +9,7 @@
     position: relative;
     display: flex;
     gap: 8px;
-    padding: 10px 14px;
+    padding: 10px 14px 0px 14px;
     border-radius: var(--md-border-radius);
 
     .circle{
@@ -51,7 +51,9 @@
 }
 
 .content{
-    width: 85%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 40px 0px 0px;
     .name, .description{
         white-space: nowrap;
         overflow: hidden;
@@ -118,6 +120,8 @@
 .footer{
     display: flex;
     justify-content: space-between;
+    padding-bottom: 10px;
+    cursor: default;
     .time{
         display: flex;
         align-items: center;
@@ -156,4 +160,13 @@
         height: 20px;
     }
     gap: 6px;
+}
+
+@media screen and (max-width: 768px){
+    .task{
+        padding: 8px 10px 0px 10px;
+    }
+    .footer{
+        padding-bottom: 8px;
+    }
 }

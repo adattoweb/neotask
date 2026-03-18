@@ -14,7 +14,13 @@
         height: 100px;
     }
 }
-
+@media screen and (max-width: 1360px){
+    .form {
+        .textarea{
+            height: 80px;
+        }
+    }
+}
 @media screen and (max-width: 1024px){
     .form {
         .textarea{
