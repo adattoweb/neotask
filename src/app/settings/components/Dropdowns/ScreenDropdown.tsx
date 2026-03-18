@@ -21,7 +21,7 @@ export function ScreenDropdown() {
                     </div>
                     <ChevronIcon className={styles.dropdown__chevron}/>
                 </Dropdown.Button>
-                <Dropdown.Content className={styles.dropdown__content}>
+                <Dropdown.Content className={styles.dropdown__content} addTop={6}>
                     {Object.keys(ROUTES).map(key => {
                         const Icon = ROUTES[key].ICON
                         return (

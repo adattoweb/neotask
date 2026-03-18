@@ -34,9 +34,9 @@ export function PhotoEditor(){
     return (
         <div className={styles.photo}>
             <ImageModal isOpen={modals.isLogoEditorOpen} modalKey="isLogoEditorOpen" {...register("logo")} />
-            <h4 className={styles.photo__header}>
+            <Header>
                 {t("photo")}
-            </h4>
+            </Header>
             <div className={styles.photo__flex}>
                 <Image width={64} height={64} className={styles.photo__image} src="/images/test-logo.png" alt="logo" />
                 <div className={styles.photo__content}>

@@ -12,7 +12,7 @@ export default function Today(){
     const t = useTranslation("ua");
     return (
         <FormProvider {...methods}>
-            <div className={`${noteStyles.notes} bg-alpha br-alpha page ${styles.today}`}>
+            <div className={`${noteStyles.notes} bg-alpha page ${styles.today}`}>
                 <h2 className={noteStyles.header}>{t("today")} <ProjectDropdown /></h2>
                 <TaskList className={styles.list}/>
             </div>

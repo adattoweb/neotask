@@ -10,7 +10,7 @@
     cursor: pointer;
     user-select: none;
 }
-.rotated svg{
+.rotated > svg{
     transform: rotate(180deg) !important;
 }
 
@@ -40,7 +40,7 @@
     padding: 8px 10px;
     transition: 0.3s ease all;
     cursor: pointer;
-    border-radius: var(--sm-border-radius);
+    border-radius: var(--md-border-radius);
     overflow: hidden;
     user-select: none;
     &:hover{

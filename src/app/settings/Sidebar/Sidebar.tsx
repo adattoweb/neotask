@@ -1,12 +1,13 @@
 "use client"
 
-import { PropsWithChildren } from "react"
+import { PropsWithChildren, useState } from "react"
 import styles from "./Sidebar.module.scss"
 import { useTabStore, type TabType } from "../stores/useTabStore"
 import { tabs } from "../tabs"
-import { LeftArrowIcon } from "@/UI/Icons/Icons"
+import { LeftArrowIcon, WindowIcon } from "@/UI/Icons/Icons"
 import { useRouter } from "next/navigation"
 import { useTranslation } from "@/hooks/useTranslation"
+import clsx from "clsx"
 
 
 interface NavProps extends PropsWithChildren {
@@ -27,10 +28,14 @@ function NavItem({ tabKey, Icon, children }: NavProps) {
 export function Sidebar() {
     const router = useRouter()
     const t = useTranslation("ua")
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <aside className={styles.sidebar}>
+        <aside className={clsx(styles.sidebar, !isOpen && styles.close)}>
             <h3 className={styles.header}>{t("settings")}</h3>
+            <div className={clsx(styles.item, styles.window)} onClick={() => setIsOpen(prev => !prev)}>
+                <WindowIcon/>
+            </div>
             <div className={styles.return} onClick={() => router.back()}>
                 <LeftArrowIcon className={styles.return__icon} />
                 <p className={styles.return__text}>{t("returnBack")}</p>

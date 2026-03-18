@@ -1,6 +1,7 @@
 "use client"
 
 import { FormProvider, useForm } from "react-hook-form"
+import noteStyles from "@/app/notes/page.module.scss"
 import styles from "./page.module.scss"
 import { TaskList } from "../components/TaskList/TaskList"
 import { NotesList } from "../notes/components/NotesList/NotesList"
@@ -12,7 +13,7 @@ export default function Today() {
 
     return (
         <FormProvider {...methods}>
-            <div className={`${styles.today} bg-alpha br-alpha`}>
+            <div className={`${noteStyles.notes} ${styles.project} bg-alpha br-alpha page`}>
                 <h2 className={styles.header}>{t("project")}</h2>
                 <h3 className={styles.name}>{t("tasks")}</h3>
                 <TaskList className={styles.list} />

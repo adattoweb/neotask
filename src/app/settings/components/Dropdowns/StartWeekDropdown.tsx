@@ -26,7 +26,7 @@ export function StartWeekDropdown() {
                     </div>
                     <ChevronIcon className={styles.dropdown__chevron}/>
                 </Dropdown.Button>
-                <Dropdown.Content className={styles.dropdown__content}>
+                <Dropdown.Content className={styles.dropdown__content} addTop={6}>
                     {starts.map(el => <Dropdown.Item key={el} value={el}>{el}</Dropdown.Item>)}
                 </Dropdown.Content>
             </Dropdown>

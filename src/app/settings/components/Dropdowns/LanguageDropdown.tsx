@@ -21,7 +21,7 @@ export function LanguageDropdown() {
                     </div>
                     <ChevronIcon className={styles.dropdown__chevron}/>
                 </Dropdown.Button>
-                <Dropdown.Content className={styles.dropdown__content}>
+                <Dropdown.Content className={styles.dropdown__content} addTop={6}>
                     {Object.keys(languages).map(key => <Dropdown.Item key={key} value={key}>{languages[key]}</Dropdown.Item>)}
                 </Dropdown.Content>
             </Dropdown>

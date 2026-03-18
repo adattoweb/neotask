@@ -149,11 +149,12 @@
 
 @media screen and (max-width: 380px){
   :root{
-    --content-width: calc(100vw + 1px);
+    --content-width: 100vw;
   }
   .content{
-    right: -1px;
+    right: 0px;
     border-radius: 0px !important;
+    border: 0px !important;
     &::before{
       width: 100vw !important;
       right: 0;
@@ -328,5 +329,6 @@ svg {
 @media screen and (max-width: 380px){
   .page{
     border-radius: 0px;
+    border: 0px;
   }
 }

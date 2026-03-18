@@ -13,7 +13,7 @@ export default function Notes(){
 
     return (
         <FormProvider {...methods}>
-            <div className={`${styles.notes} bg-alpha br-alpha page`}>
+            <div className={`${styles.notes} bg-alpha page`}>
                 <h2 className={styles.header}>{t("notes")}<ProjectDropdown /></h2>
                 <NotesList/>
             </div>

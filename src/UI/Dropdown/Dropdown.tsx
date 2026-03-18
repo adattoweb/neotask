@@ -88,7 +88,11 @@ function Item({ value, children, className }: ItemProps){
     )
 }
 
-function Content({ children, className }:PropsWithChildren<WithClassName>){
+interface ContentProps extends PropsWithChildren<WithClassName> {
+    addTop?: number
+}
+
+function Content({ children, className, addTop = 0 }:ContentProps){
     const { isOpen, dropdownRef } = useCheckContext("Dropdown Context", DropdownContext)
     const [mounted, setMounted] = useState(false)
     const [stylesPos, setStylesPos] = useState<React.CSSProperties>({})
@@ -110,7 +114,7 @@ function Content({ children, className }:PropsWithChildren<WithClassName>){
         if (top + dropdownRect.height > window.innerHeight) top = rect.top - dropdownRect.height
         if (top < 0) top = 0
 
-        console.log(left, top)
+        top += addTop
 
         setStylesPos({ left, top })
     }, [isOpen])
