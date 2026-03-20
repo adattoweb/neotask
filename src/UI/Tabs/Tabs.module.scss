@@ -8,7 +8,6 @@
 }
 .tab{
     color: #fff;
-    // border-radius: var(--md-border-radius);
     border-radius: 100px;
     font-size: 16px;
     font-family: var(--font-montserrat-alternates);
@@ -20,5 +19,25 @@
     &.active {
         background-color: #fff;
         color: #000
+    }
+}
+@media screen and (max-width: 768px){
+    .tab{
+        padding: 5px 7px;
+    }
+    .tabs{
+        gap: 4px;
+        padding: 5px 7px;
+    }
+}
+
+@media screen and (max-width: 380px){
+    .tabs{
+        gap: 0px;
+        padding: 4px 6px;
+    }
+    .tab{
+        padding: 4px 6px;
+        font-size: 14px;
     }
 }

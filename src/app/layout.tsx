@@ -42,8 +42,8 @@ export default function RootLayout({ children }:PropsWithChildren) {
                     <ClientWrapper>
                         {children}
                     </ClientWrapper>
-                    <AnalyticsModal/>
                 </div>
+                <AnalyticsModal />
             </body>
         </html>
     );

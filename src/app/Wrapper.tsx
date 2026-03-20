@@ -5,16 +5,15 @@ import { Sidebar } from "@/UI/Sidebar/Sidebar"
 import clsx from "clsx"
 
 export function ClientWrapper({ children }: { children: ReactNode }) {
-  const pathname = usePathname()
-  const withSidebar = !pathname.startsWith("/settings")
-//   const closeModals = useModalsStore(store => store.closeModals)
+   const pathname = usePathname()
+   const withSidebar = !pathname.startsWith("/settings") && !pathname.startsWith("/login")
 
-  return (
+   return (
       <div className="wrapper" id="root">
-          {withSidebar && <Sidebar />}
-          <div className={clsx("content",!withSidebar && "without")}>
-              {children}
-          </div>
+         {withSidebar && <Sidebar />}
+         <div className={clsx("content", !withSidebar && "without")}>
+            {children}
+         </div>
       </div>
-  )
+   )
 }

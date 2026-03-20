@@ -93,7 +93,7 @@ interface ContentProps extends PropsWithChildren<WithClassName> {
 }
 
 function Content({ children, className, addTop = 0 }:ContentProps){
-    const { isOpen, dropdownRef } = useCheckContext("Dropdown Context", DropdownContext)
+    const { isOpen, dropdownRef, setIsOpen } = useCheckContext("Dropdown Context", DropdownContext)
     const [mounted, setMounted] = useState(false)
     const [stylesPos, setStylesPos] = useState<React.CSSProperties>({})
     const currentRef = useRef<HTMLDivElement>(null)

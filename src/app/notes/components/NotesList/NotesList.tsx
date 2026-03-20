@@ -61,9 +61,9 @@ function Add() {
   return (
     <footer className={taskStyles.add__wrapper}>
       {isVisible ? <NoteForm className={isOpen ? "fade-in" : "fade-out"} isOpen={isOpen} setIsOpen={setIsOpen} setIsVisible={setIsVisible} /> : (
-        <div className={`${taskStyles.add} ${isOpen ? "fade-out" : "fade-in"}`}>
+        <div className={`${taskStyles.add} ${isOpen ? "fade-out" : "fade-in"}`} onClick={() => setIsOpen(true)}>
           <PlusCircleIcon className={taskStyles.icon} />
-          <p onClick={() => setIsOpen(true)}>{t("addNewNote")}</p>
+          <p>{t("addNewNote")}</p>
         </div>
       )}
     </footer>

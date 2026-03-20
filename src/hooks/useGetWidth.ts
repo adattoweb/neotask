@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
-type UseGetWidthReturn = [number | null, React.Dispatch<React.SetStateAction<number | null>>]
+type UseGetWidthReturn = [number, React.Dispatch<React.SetStateAction<number>>]
 
 export function useGetWidth(): UseGetWidthReturn {
-   const [width, setWidth] = useState<number | null>(null)
+   const [width, setWidth] = useState<number>(0)
    useEffect(() => {
       const updateWidth = () => {
          setWidth(document.documentElement.clientWidth)

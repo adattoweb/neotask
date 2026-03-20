@@ -1,3 +1,10 @@
+.analytics{
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
 .header{
     text-align: center;
     font-size: 24px;
@@ -5,16 +12,10 @@
     font-weight: 600;
     padding: 6px 0px 12px 0px;
 }
-
-.analytics{
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 .progress{
+    margin: 20px 0px 10px 0px;
     position: relative;
-    padding: 20px 0px 10px 0px;
+    box-sizing: border-box;
 }
 .trophy__icon{
     width: 64px;
@@ -55,7 +56,6 @@
     width: 100%;
     height: 300px;
 }
-
 .tooltip{
     border-radius: var(--sm-border-radius);
     padding: 6px 10px;
@@ -70,5 +70,50 @@
     font-size: 16px;
     span{
         font-weight: 500;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .header{
+        font-size: 22px;
+    }
+    .analytics{
+        width: 400px;
+    }
+    .progress{
+        margin: 15px 0px 5px 0px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .analytics{
+        width: 95vw;
+    }
+    .header{
+        font-size: 20px;
+    }
+    .text__header{
+        font-size: 16px;
+    }
+    .description, .text__underline, .tooltip__label, .tooltip__item{
+        font-size: 14px;
+    }
+    .area{
+        height: 240px;
+    }
+    .trophy__icon{
+        width: 48px;
+        height: 48px;
+    }
+    .areachart{
+        margin-right: 20px !important;
+    }
+}
+@media screen and (max-width: 380px){
+    .header{
+        font-size: 18px;
+    }
+    .area{
+        height: 220px;
     }
 }

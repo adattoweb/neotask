@@ -1,5 +1,6 @@
 import { Area, AreaChart, ResponsiveContainer, Tooltip, TooltipContentProps, XAxis, YAxis } from "recharts";
 import styles from "./AnalyticsModal.module.scss"
+import { useGetWidth } from "@/hooks/useGetWidth";
 
 const testData = [
     {
@@ -50,10 +51,11 @@ function CustomToolTip({ active, payload, label }:TooltipContentProps){
 }
 
 export default function AreaChartComponent() {
+    const [width] = useGetWidth()
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <AreaChart width={300} height={200} data={testData} margin={{right: 30}}>
-                <YAxis />
+            <AreaChart data={testData} margin={{right: width <= 480 ? 20 : 30 }}>
+                <YAxis width={30}/>
                 <XAxis dataKey="date"/>
                 <Tooltip content={CustomToolTip}/>
                 <Area type="monotone" dataKey="tasks" stroke="#64ade1" fill="#4891c6" stackId="0"/>

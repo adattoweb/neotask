@@ -22,9 +22,9 @@ function Add(){
   return (
     <footer className={styles.add__wrapper}>
       {isVisible ? <TaskForm className={isOpen ? "fade-in" : "fade-out"} isOpen={isOpen} setIsOpen={setIsOpen} setIsVisible={setIsVisible}/> : (
-        <div className={`${styles.add} ${isOpen ? "fade-out" : "fade-in"}`}>
+        <div className={`${styles.add} ${isOpen ? "fade-out" : "fade-in"}`} onClick={() => setIsOpen(true)}>
           <PlusCircleIcon className={styles.icon}/>
-          <p onClick={() => setIsOpen(true)}>{t("addNewTask")}</p>
+          <p>{t("addNewTask")}</p>
         </div>
       )}
     </footer>

@@ -11,20 +11,18 @@ interface Props {
     id?: string
 }
 
-export function Modal({ className = styles.modal, isOpen, children, id = "root" }: PropsWithChildren<Props>) {
+export function Modal({ className, isOpen, children, id = "root" }: PropsWithChildren<Props>) {
     const [isVisible, setIsVisible] = useState(isOpen)
-
-    // console.log(`isOpen: ${isOpen}, isVisible: ${isVisible}`)
 
     useEffect(() => {
         if(isOpen) setIsVisible(true)
     }, [isOpen])
 
-    if (!isVisible) return null
-
     const handleAnimationEnd = () => {
         if (!isOpen) setIsVisible(false)
     }
+
+    if (!isVisible) return null
 
     return createPortal(
         <div className={`${className} bg-alpha br-alpha ${styles.modal} ${isOpen ? "fade-in" : "fade-out"}`} onAnimationEnd={handleAnimationEnd}>

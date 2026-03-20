@@ -11,6 +11,8 @@ export function Sidebar(){
     const [isOpen, setIsOpen] = useState(false)
     const [isVisible, setIsVisible] = useState(false)
 
+    const [was, setWas] = useState(false)
+
     useEffect(() => {
         if (isOpen) {
             setIsVisible(true)
@@ -22,10 +24,14 @@ export function Sidebar(){
         if (!isOpen) setIsVisible(false)
     }
 
+    const handleClick = () => {
+        setWas(true)
+        setIsOpen(prev => !prev)
+    }
 
     return (
-        <aside id="sidebar" className={clsx(styles.sidebar, "bg-alpha br-alpha blur", !isOpen ? `${styles.close} ${styles["sidebar-fade-out"]}` : styles["sidebar-fade-in"])} onAnimationEnd={handleAnimationEnd}>
-            <WindowIcon className={styles.window} onClick={() => setIsOpen(prev => !prev)}/>
+        <aside id="sidebar" className={clsx(styles.sidebar, "bg-alpha br-alpha blur", !isOpen && was ? `${styles.close} ${styles["sidebar-fade-out"]}` : styles["sidebar-fade-in"], !was && styles.first)} onAnimationEnd={handleAnimationEnd}>
+            <WindowIcon className={styles.window} onClick={handleClick}/>
             {isVisible && <div className={`${styles.content} ${isOpen ? "fade-in" : "fade-out"}`}>
                 <ProfileSection/>
                 <Navigation/>

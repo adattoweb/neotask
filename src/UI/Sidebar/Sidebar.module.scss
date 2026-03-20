@@ -13,13 +13,22 @@
    border-left: none;
    border-right: none;
    border-radius: 0 var(--full-border-radius) var(--full-border-radius) 0;
-   z-index: 1;
+   z-index: 2;
 
    position: absolute;
    top: var(--top);
    bottom: var(--bottom);
    width: var(--sidebar-width);
    box-sizing: border-box;
+}
+.sidebar.first{
+  width: 0px !important;
+  height: 0px !important;
+  background: none !important;
+  border: none !important;
+  z-index: 2 !important;
+  overflow: visible !important;
+  left: 60px !important;
 }
 
 .window{
