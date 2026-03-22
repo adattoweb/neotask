@@ -75,13 +75,14 @@ interface InputProps extends WithClassName{
    name: string
    required?: false | string
    maxLength?: number
+   type?: string
 }
 
-export function Input({ className = "", placeholder, name, required = false, maxLength = Infinity }:InputProps) {
+export function Input({ className = "", placeholder, name, required = false, maxLength = Infinity, type="text" }:InputProps) {
     const { formState: { errors }, register } = useFormContext()
     return (
         <>
-            <input className={`${styles.input} ${className}`} placeholder={placeholder} type="text" {...register(name, { required: required, maxLength: maxLength })} />
+            <input className={`${styles.input} ${className}`} placeholder={placeholder} type={type} {...register(name, { required: required, maxLength: maxLength })} />
             {required && errors[name] && (
                 <p className="error">{(errors[name] as FieldError).message}</p>
             )}
@@ -94,13 +95,14 @@ export function Paragraph({ className, fontSize = 14, children }: CustomText){
 }
 interface HiddenInputProps extends PropsWithChildren<InputProps> {
     btnClassName?: string
+    type: string
 }
 
-export function HiddenInput({ btnClassName, className = "", placeholder, name, required = false, maxLength = Infinity, children }:HiddenInputProps) {
+export function HiddenInput({ btnClassName, className = "", placeholder, name, required = false, maxLength = Infinity, children, type }:HiddenInputProps) {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
-            {isOpen ? <Input className={className} placeholder={placeholder} name={name} required={required} maxLength={maxLength}/> : <Button className={btnClassName} onClick={() => setIsOpen(true)}>{children}</Button>}
+            {isOpen ? <Input className={className} placeholder={placeholder} name={name} required={required} maxLength={maxLength} type={type}/> : <Button className={btnClassName} onClick={() => setIsOpen(true)}>{children}</Button>}
         </>
     )
 }

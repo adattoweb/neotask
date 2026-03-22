@@ -102,6 +102,7 @@
     }
     &.without::before{
       backdrop-filter: none;
+      position: static !important;
     }
     &.without{
       width: auto !important;
