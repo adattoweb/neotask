@@ -83,7 +83,7 @@
    top: var(--top);
    bottom: var(--bottom);
    right: 20px;
-   border-radius: var(--full-border-radius);
+   border-radius: var(--full-border-radius) !important;
    box-sizing: border-box;
    overflow-y: scroll;
    display: flex;
