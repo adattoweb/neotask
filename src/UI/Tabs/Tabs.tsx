@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren } from "react";
-import styles from "./Tabs.module.scss"
+import styles from "./Tabs.module.css"
 import { WithClassName } from "@/types/types";
 import { useCheckContext } from "@/hooks/useCheckContext";
 

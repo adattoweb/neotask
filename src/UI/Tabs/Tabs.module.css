@@ -1,4 +1,4 @@
-.tabs{
+.tabs {
     display: flex;
     gap: 12px;
     padding: 6px 8px;
@@ -6,7 +6,8 @@
     width: fit-content;
     align-self: center;
 }
-.tab{
+
+.tab {
     color: #fff;
     border-radius: 100px;
     font-size: 16px;
@@ -16,27 +17,31 @@
     padding: 6px 8px;
     cursor: pointer;
     user-select: none;
-    &.active {
-        background-color: #fff;
-        color: #000
-    }
 }
-@media screen and (max-width: 768px){
-    .tab{
+
+.tab.active {
+    background-color: #fff;
+    color: #000;
+}
+
+@media screen and (max-width: 768px) {
+    .tab {
         padding: 5px 7px;
     }
-    .tabs{
+
+    .tabs {
         gap: 4px;
         padding: 5px 7px;
     }
 }
 
-@media screen and (max-width: 380px){
-    .tabs{
+@media screen and (max-width: 380px) {
+    .tabs {
         gap: 0px;
         padding: 4px 6px;
     }
-    .tab{
+
+    .tab {
         padding: 4px 6px;
         font-size: 14px;
     }
