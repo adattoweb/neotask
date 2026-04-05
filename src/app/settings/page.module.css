@@ -1,0 +1,125 @@
+.settings {
+   width: 1200px;
+   height: 700px;
+   border-radius: var(--full-border-radius);
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   display: flex;
+}
+
+.wrapper {
+   padding: 20px;
+   flex: 1 1 auto;
+   overflow-y: scroll;
+}
+
+.content {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   min-width: 100%;
+}
+
+.header {
+   padding-bottom: 6px;
+   font-family: var(--font-montserrat-alternates);
+   font-size: 22px;
+   font-weight: 500;
+}
+
+.remove-btn {
+   margin-top: 6px;
+   background-color: #c03333;
+}
+
+.remove-btn:hover {
+   background-color: #d24141 !important;
+}
+
+.dropdown__button {
+   box-sizing: border-box;
+   background-color: rgba(0, 0, 0, var(--transparent));
+   padding: 8px 14px;
+   border-radius: var(--md-border-radius);
+   font-family: var(--font-montserrat-alternates);
+   font-size: 16px;
+}
+
+.dropdown__text {
+   display: flex;
+   gap: 8px;
+   align-items: center;
+}
+
+.dropdown__text svg {
+   width: 20px;
+   height: 20px;
+}
+
+.dropdown__content {
+   background-color: rgba(0, 0, 0, var(--transparent));
+   border: none;
+}
+
+.dropdown__content,
+.dropdown__button {
+   width: 300px;
+}
+
+.dropdown__chevron {
+   transition: 0.3s ease transform;
+   width: 18px;
+   height: 18px;
+   transform: rotate(0deg);
+   margin-left: auto;
+}
+
+.dropdown__chevron.active {
+   transform: rotate(180deg);
+}
+
+.mt-6 {
+   margin-top: 6px;
+}
+
+/* ===== MEDIA ===== */
+
+@media screen and (max-width: 1366px) {
+   .settings {
+      width: calc(100vw - 10vh);
+      height: 90vh;
+   }
+}
+
+@media screen and (max-width: 768px) {
+   .wrapper {
+      margin-top: 40px;
+   }
+
+   .dropdown__content,
+   .dropdown__button {
+      width: 240px;
+   }
+}
+
+@media screen and (max-width: 380px) {
+   .settings {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0px;
+   }
+
+   .dropdown__content,
+   .dropdown__button {
+      width: 220px;
+   }
+}
+
+@media screen and (max-width: 320px) {
+   .dropdown__content,
+   .dropdown__button {
+      width: 200px;
+   }
+}

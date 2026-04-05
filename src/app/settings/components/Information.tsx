@@ -1,4 +1,4 @@
-import styles from "../page.module.scss"
+import styles from "../page.module.css"
 import { Block, Header, Paragraph } from "./Constructor/Constructor"
 
 import { useTranslation } from "@/hooks/useTranslation"
@@ -9,21 +9,15 @@ export function Information() {
    return (
       <div className={`${styles.information} ${styles.content}`}>
          <Block className={styles["mt-6"]}>
-            <Paragraph fontSize={16}>
-               {t("informationDescription")}
-            </Paragraph>
+            <Paragraph fontSize={16}>{t("informationDescription")}</Paragraph>
          </Block>
          <Block className={styles["mt-6"]}>
             <Header fontSize={18}>{t("customization")}</Header>
-            <Paragraph fontSize={16}>
-               {t("customizationDescription")}
-            </Paragraph>
+            <Paragraph fontSize={16}>{t("customizationDescription")}</Paragraph>
          </Block>
          <Block className={styles["mt-6"]}>
             <Header fontSize={18}>{t("ourGoal")}</Header>
-            <Paragraph fontSize={16}>
-               {t("ourGoalDescription")}
-            </Paragraph>
+            <Paragraph fontSize={16}>{t("ourGoalDescription")}</Paragraph>
          </Block>
       </div>
    )

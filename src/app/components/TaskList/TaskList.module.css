@@ -1,0 +1,187 @@
+.list {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   margin-top: 18px;
+}
+
+.task {
+   position: relative;
+   display: flex;
+   gap: 8px;
+   padding: 10px 14px 0px 14px;
+   border-radius: var(--md-border-radius);
+}
+
+.task .circle {
+   min-width: 20px;
+   min-height: 20px;
+   max-width: 20px;
+   max-height: 20px;
+   background-color: rgba(255, 255, 255, 0.2);
+   border: 2px solid rgba(255, 255, 255, 0.8);
+   border-radius: 100%;
+   cursor: pointer;
+   margin-top: 2px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.task .circle.red {
+   background-color: rgba(255, 0, 0, 0.2);
+   border: 2px solid rgba(176, 64, 64, 0.8);
+}
+
+.task .circle.orange {
+   background-color: rgba(230, 139, 21, 0.2);
+   border: 2px solid rgba(225, 130, 22, 0.8);
+}
+
+.task .circle.blue {
+   background-color: rgba(91, 146, 255, 0.2);
+   border: 2px solid rgba(110, 124, 183, 0.8);
+}
+
+.task .circle.green {
+   background-color: rgba(13, 232, 75, 0.2);
+   border: 2px solid rgba(101, 163, 120, 0.8);
+}
+
+.form {
+   width: auto !important;
+}
+
+.content {
+   width: 100%;
+   box-sizing: border-box;
+   padding: 0px 40px 0px 0px;
+}
+
+.content .name,
+.content .description {
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.content .name {
+   font-size: 16px;
+   font-family: var(--font-montserrat-alternates);
+   font-weight: 400;
+}
+
+.content .description {
+   font-size: 14px;
+   font-weight: 300;
+   color: #d4d4d4;
+   margin-bottom: 8px;
+}
+
+.checkmark {
+   position: relative;
+   min-width: 32px;
+   min-height: 32px;
+   left: 2px;
+   bottom: 4px;
+}
+
+.checkmark path {
+   stroke-dasharray: 28;
+   stroke-dashoffset: 28;
+   transition: stroke-dashoffset 0.4s ease;
+}
+
+.circle.active .checkmark path {
+   animation: checkmarkFilled 0.5s ease forwards;
+}
+
+@keyframes checkmarkFilled {
+   0% {
+      stroke-dashoffset: 28;
+   }
+   100% {
+      stroke-dashoffset: 0;
+   }
+}
+
+.ellipsis {
+   position: absolute !important;
+   right: 5px;
+   top: 5px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: 0.3s ease background-color;
+}
+
+.ellipsis .ellipsis__svg {
+   border-radius: var(--sm-border-radius);
+   padding: 4px;
+   width: 20px;
+   height: 20px;
+}
+
+.ellipsis .ellipsis__svg:hover {
+   background-color: rgba(255, 255, 255, 0.1);
+   cursor: pointer;
+}
+
+.footer {
+   display: flex;
+   justify-content: space-between;
+   padding-bottom: 10px;
+   cursor: default;
+}
+
+.footer .time {
+   display: flex;
+   align-items: center;
+   gap: 2px;
+   position: absolute;
+   right: 10px;
+}
+
+.footer .time svg {
+   width: 15px;
+   height: 15px;
+   stroke: #ff9c3f;
+}
+
+.time p {
+   font-size: 14px;
+   font-weight: 400;
+   color: #ff9c3f;
+}
+
+.add__wrapper {
+   margin-top: 8px;
+   display: flex;
+   justify-content: center;
+   font-family: var(--font-montserrat-alternates);
+   font-size: 16px;
+   font-weight: 400;
+}
+
+.add {
+   display: flex;
+   align-items: center;
+   text-align: center;
+   gap: 6px;
+   cursor: pointer;
+}
+
+.add .icon {
+   width: 20px;
+   height: 20px;
+}
+
+@media screen and (max-width: 768px) {
+   .task {
+      padding: 8px 10px 0px 10px;
+   }
+
+   .footer {
+      padding-bottom: 8px;
+   }
+}

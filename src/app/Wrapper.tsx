@@ -11,9 +11,7 @@ export function ClientWrapper({ children }: { children: ReactNode }) {
    return (
       <div className="wrapper" id="root">
          {withSidebar && <Sidebar />}
-         <div className={clsx("content", !withSidebar && "without")}>
-            {children}
-         </div>
+         <div className={clsx("content", !withSidebar && "without")}>{children}</div>
       </div>
    )
 }

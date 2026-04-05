@@ -1,6 +1,6 @@
 "use client"
 
-import styles from "./page.module.scss"
+import styles from "./page.module.css"
 
 import { Day } from "@/app/components/Day/Day"
 import { useGetWidth } from "@/hooks/useGetWidth"
@@ -13,9 +13,13 @@ export default function Calendar() {
       <div className={`${styles.calendar} bg-alpha page`}>
          {width === null || width > 768 ? (
             <>
-               {days.map(el => <Day key={el} />)}
+               {days.map((el) => (
+                  <Day key={el} />
+               ))}
             </>
-         ) : <Day />}
+         ) : (
+            <Day />
+         )}
       </div>
    )
 }

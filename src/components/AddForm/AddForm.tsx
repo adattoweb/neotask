@@ -1,12 +1,11 @@
 "use client"
 
+import styles from "./AddForm.module.css"
 import { CloseIcon, SendIcon } from "@/UI/Icons/Icons"
-import styles from "./AddForm.module.scss"
 import { FieldError, FormProvider, SubmitHandler, useForm, useFormContext } from "react-hook-form"
 import { WithClassName } from "@/types/types"
 import { createContext, PropsWithChildren, useEffect } from "react"
 import { useCheckContext } from "@/hooks/useCheckContext"
-
 
 interface FormProps extends PropsWithChildren<WithClassName> {
    isOpen: boolean
@@ -28,39 +27,46 @@ interface IFormContext {
 
 const FormContext = createContext<IFormContext | null>(null)
 
-function Input({ className = "", placeholder, name, required = false, maxLength = Infinity }:InputProps){
-   const { formState: { errors }, register } = useFormContext()
+function Input({ className = "", placeholder, name, required = false, maxLength = Infinity }: InputProps) {
+   const {
+      formState: { errors },
+      register,
+   } = useFormContext()
    return (
       <>
-         <input className={className} placeholder={placeholder} type="text" {...register(name, { required: required, maxLength: maxLength })} />
-         {required && errors[name] && (
-            <p className="error">{(errors[name] as FieldError).message}</p>
-         )}
+         <input
+            className={className}
+            placeholder={placeholder}
+            type="text"
+            {...register(name, { required: required, maxLength: maxLength })}
+         />
+         {required && errors[name] && <p className="error">{(errors[name] as FieldError).message}</p>}
       </>
    )
 }
 
-function Textarea({ className = "", placeholder, name, required = false, maxLength = Infinity }:InputProps){
-   const { formState: { errors }, register } = useFormContext()
+function Textarea({ className = "", placeholder, name, required = false, maxLength = Infinity }: InputProps) {
+   const {
+      formState: { errors },
+      register,
+   } = useFormContext()
    return (
       <>
-         <textarea className={`${styles.textarea} ${className}`} placeholder={placeholder} {...register(name, { required: required, maxLength: maxLength })} />
-         {required && errors[name] && (
-            <p className="error">{(errors[name] as FieldError).message}</p>
-         )}
+         <textarea
+            className={`${styles.textarea} ${className}`}
+            placeholder={placeholder}
+            {...register(name, { required: required, maxLength: maxLength })}
+         />
+         {required && errors[name] && <p className="error">{(errors[name] as FieldError).message}</p>}
       </>
    )
 }
 
-function Parameters({ className, children }:PropsWithChildren<WithClassName>){
-   return (
-      <div className={`${styles.parameters} ${className}`}>
-         {children}
-      </div>
-   )
+function Parameters({ className, children }: PropsWithChildren<WithClassName>) {
+   return <div className={`${styles.parameters} ${className}`}>{children}</div>
 }
 
-function Footer({ className, children }:PropsWithChildren<WithClassName>){
+function Footer({ className, children }: PropsWithChildren<WithClassName>) {
    const { setIsOpen } = useCheckContext<IFormContext>("Form Context", FormContext)
    return (
       <footer className={`${styles.footer} ${className}`}>
@@ -70,15 +76,15 @@ function Footer({ className, children }:PropsWithChildren<WithClassName>){
                <CloseIcon onClick={() => setIsOpen(false)} />
             </div>
             <button className={`${styles.send} ${styles.button}`}>
-               <SendIcon/>
+               <SendIcon />
             </button>
          </div>
       </footer>
    )
 }
 
-function AddForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData, children}: FormProps) {
-   const methods = useForm<FormData>();
+function AddForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData, children }: FormProps) {
+   const methods = useForm<FormData>()
    const { handleSubmit, reset } = methods
    const onSubmit: SubmitHandler<FormData> = (data) => {
       console.log(data)
@@ -89,17 +95,21 @@ function AddForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData,
    }
 
    useEffect(() => {
-      if(defaultData !== undefined){
+      if (defaultData !== undefined) {
          reset(defaultData)
       }
    }, [])
 
-   const value = {setIsOpen}
+   const value = { setIsOpen }
 
    return (
       <FormProvider {...methods}>
          <FormContext.Provider value={value}>
-            <form className={`${styles.form} bg-alpha br-alpha ${className}`} onSubmit={handleSubmit(onSubmit)} onAnimationEnd={toggleVisible}>
+            <form
+               className={`${styles.form} bg-alpha br-alpha ${className}`}
+               onSubmit={handleSubmit(onSubmit)}
+               onAnimationEnd={toggleVisible}
+            >
                {children}
             </form>
          </FormContext.Provider>
@@ -113,4 +123,3 @@ AddForm.Footer = Footer
 AddForm.Textarea = Textarea
 
 export default AddForm
-

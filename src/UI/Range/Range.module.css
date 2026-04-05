@@ -15,7 +15,7 @@
 .value {
    min-width: 40px;
    text-align: right;
-   color: #D4D4D4;
+   color: #d4d4d4;
 }
 
 .range {
@@ -29,13 +29,13 @@
 .range::-webkit-slider-runnable-track {
    height: 6px;
    border-radius: 999px;
-   background: rgba(255, 255, 255, .15);
+   background: rgba(255, 255, 255, 0.15);
 }
 
 .range::-moz-range-track {
    height: 6px;
    border-radius: 999px;
-   background: rgba(255, 255, 255, .15);
+   background: rgba(255, 255, 255, 0.15);
 }
 
 .range::-webkit-slider-thumb {
