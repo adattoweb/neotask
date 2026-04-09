@@ -1,0 +1,21 @@
+.ellipsis {
+   position: absolute !important;
+   right: 5px;
+   top: 5px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: 0.3s ease background-color;
+}
+
+.ellipsis .ellipsis__svg {
+   border-radius: var(--sm-border-radius);
+   padding: 4px;
+   width: 20px;
+   height: 20px;
+}
+
+.ellipsis .ellipsis__svg:hover {
+   background-color: rgba(255, 255, 255, 0.1);
+   cursor: pointer;
+}

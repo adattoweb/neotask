@@ -3,7 +3,7 @@
 import styles from "./page.module.css"
 import { FormProvider, useForm } from "react-hook-form"
 import noteStyles from "@/app/notes/page.module.scss"
-import { TaskList } from "../components/TaskList/TaskList"
+import { TaskList } from "../(calendar)/components/TaskList/TaskList"
 import { NotesList } from "../notes/components/NotesList/NotesList"
 import { useTranslation } from "@/hooks/useTranslation"
 

@@ -4,7 +4,7 @@ import styles from "./page.module.css"
 import noteStyles from "@/app/notes/page.module.css"
 import { FormProvider, useForm } from "react-hook-form"
 import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
-import { TaskList } from "@/app/components/TaskList/TaskList"
+import { TaskList } from "@/app/(calendar)/components/TaskList/TaskList"
 import { useTranslation } from "@/hooks/useTranslation"
 
 export default function Today() {

@@ -2,7 +2,7 @@
 
 import styles from "./page.module.css"
 
-import { Day } from "@/app/components/Day/Day"
+import { Day } from "@/app/(calendar)/components/Day/Day"
 import { useGetWidth } from "@/hooks/useGetWidth"
 
 const days = [0, 1, 2, 3, 4]
@@ -13,7 +13,7 @@ export default function Calendar() {
       <div className={`${styles.calendar} bg-alpha page`}>
          {width === null || width > 768 ? (
             <>
-               {days.map((el) => (
+               {days.map(el => (
                   <Day key={el} />
                ))}
             </>

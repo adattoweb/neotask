@@ -3,9 +3,9 @@ import taskStyles from "@/app/components/TaskList/TaskList.module.css"
 import formStyles from "./NotesList.module.css"
 import { useState, useEffect } from "react"
 import { NoteForm } from "../NoteForm/NoteForm"
-import { Footer } from "@/app/components/TaskList/Footer"
+import { Footer } from "@/app/(calendar)/components/TaskList/Footer"
 import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
-import Menu from "@/app/components/TaskList/Menu"
+import { Menu, Edit, Remove } from "@/UI/Menu/Menu"
 import { PlusCircleIcon } from "@/UI/Icons/Icons"
 import { useTranslation } from "@/hooks/useTranslation"
 import { useModalsStore } from "@/stores/useModalsStore"
@@ -41,8 +41,8 @@ export function Note() {
             <Footer onClick={ignoreClick}>
                <ProjectDropdown />
                <Menu>
-                  <Menu.Edit onClick={() => setIsEdit(true)} />
-                  <Menu.Remove />
+                  <Edit onClick={() => setIsEdit(true)} />
+                  <Remove />
                </Menu>
             </Footer>
          </div>

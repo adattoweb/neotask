@@ -1,4 +1,4 @@
-import styles from "./TaskList.module.css"
+import styles from "./Menu.module.css"
 import dropdownStyles from "@/UI/Dropdown/Dropdown.module.css"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { DuplicateIcon, EditIcon, EllipsisIcon, FlagIcon, RemoveIcon } from "@/UI/Icons/Icons"
@@ -14,7 +14,7 @@ interface MenuItem {
    onClick?: () => void
 }
 
-function Remove({ onClick }: MenuItem) {
+export function Remove({ onClick }: MenuItem) {
    const t = useTranslation("ua")
    return (
       <div className={dropdownStyles.item}>
@@ -24,17 +24,17 @@ function Remove({ onClick }: MenuItem) {
    )
 }
 
-function Edit({ onClick }: MenuItem) {
+export function Edit({ onClick }: MenuItem) {
    const t = useTranslation("ua")
    return (
-      <div className={dropdownStyles.item} onClick={onClick}>
+      <div className={dropdownStyles.item}>
          <EditIcon />
          <p>{t("edit")}</p>
       </div>
    )
 }
 
-function Duplicate({ onClick }: MenuItem) {
+export function Duplicate({ onClick }: MenuItem) {
    const t = useTranslation("ua")
    return (
       <div className={dropdownStyles.item}>
@@ -44,7 +44,7 @@ function Duplicate({ onClick }: MenuItem) {
    )
 }
 
-function PriorityList({ onClick }: MenuItem) {
+export function PriorityList({ onClick }: MenuItem) {
    const t = useTranslation("ua")
 
    return (
@@ -71,7 +71,7 @@ function PriorityList({ onClick }: MenuItem) {
    )
 }
 
-function Menu({ className = "", children }: MenuProps) {
+export function Menu({ className = "", children }: MenuProps) {
    const { control } = useFormContext()
 
    return (
@@ -90,10 +90,3 @@ function Menu({ className = "", children }: MenuProps) {
       />
    )
 }
-
-Menu.Remove = Remove
-Menu.Edit = Edit
-Menu.Duplicate = Duplicate
-Menu.PriorityList = PriorityList
-
-export default Menu

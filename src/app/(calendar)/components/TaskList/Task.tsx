@@ -3,7 +3,7 @@ import { useState } from "react"
 import { CheckMarkIcon, ClockIcon } from "@/UI/Icons/Icons"
 import { Footer } from "./Footer"
 import { TaskForm } from "../TaskForm/TaskForm"
-import Menu from "./Menu"
+import { Menu, Edit, Duplicate, Remove, PriorityList } from "@/UI/Menu/Menu"
 import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 
 interface CheckMarkCircleProps {
@@ -66,10 +66,10 @@ export function Task() {
             <Footer>
                <ProjectDropdown />
                <Menu>
-                  <Menu.Edit onClick={() => setIsEdit(true)} />
-                  <Menu.Duplicate />
-                  <Menu.PriorityList />
-                  <Menu.Remove />
+                  <Edit onClick={() => setIsEdit(true)} />
+                  <Duplicate />
+                  <PriorityList />
+                  <Remove />
                </Menu>
                <div className={styles.time}>
                   <ClockIcon />
