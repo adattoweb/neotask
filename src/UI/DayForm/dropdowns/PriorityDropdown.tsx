@@ -3,14 +3,19 @@ import dropdownStyles from "@/UI/Dropdown/Dropdown.module.css"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { FlagIcon } from "@/UI/Icons/Icons"
 import { Controller, useFormContext } from "react-hook-form"
+import { PriorityType } from "@/types/task"
 
-export function PriorityDropdown() {
+interface PriorityProps {
+   priority?: PriorityType
+}
+
+export function PriorityDropdown({ priority = 5 }: PriorityProps) {
    const { control } = useFormContext()
    return (
       <Controller
          name="priority"
          control={control}
-         defaultValue="2"
+         defaultValue={priority}
          render={({ field }) => (
             <Dropdown value={field.value} onChange={field.onChange} className={`${styles.dropdown} bg-alpha`}>
                <Dropdown.Button className={styles.button}>

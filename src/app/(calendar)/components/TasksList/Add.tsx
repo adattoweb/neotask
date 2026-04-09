@@ -1,7 +1,7 @@
-import styles from "./TaskList.module.css"
+import styles from "./TasksList.module.css"
 import { useEffect, useState } from "react"
 import { PlusCircleIcon } from "@/UI/Icons/Icons"
-import { TaskForm } from "../TaskForm/TaskForm"
+import { TaskForm } from "../Task/TaskForm"
 
 import { useTranslation } from "@/hooks/useTranslation"
 

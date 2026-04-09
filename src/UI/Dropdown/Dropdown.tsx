@@ -20,47 +20,6 @@ interface IContext {
 
 export const DropdownContext = createContext<IContext | null>(null)
 
-interface DropdownProps extends PropsWithChildren<WithClassName> {
-   value?: string
-   onChange?: (value: string) => void
-   onClick?: () => void
-}
-
-function Dropdown({ className, children, value, onChange, onClick }: DropdownProps) {
-   const [isOpen, setIsOpen] = useState(false)
-   const dropdownRef = useRef(null)
-
-   const select = (val: string) => {
-      onChange?.(val)
-   }
-
-   const onItemClick = () => {
-      setIsOpen((prev) => !prev)
-      onClick?.()
-   }
-
-   const ctxValue = {
-      isOpen,
-      select,
-      value,
-      onItemClick,
-      setIsOpen,
-      dropdownRef,
-   }
-
-   return (
-      <DropdownContext.Provider value={ctxValue}>
-         <div className={`${styles.dropdown} ${className}`} ref={dropdownRef}>
-            {children}
-         </div>
-      </DropdownContext.Provider>
-   )
-}
-
-interface ContentProps extends PropsWithChildren<WithClassName> {
-   addTop?: number
-}
-
 function Content({ children, className, addTop = 0 }: ContentProps) {
    const { isOpen, dropdownRef } = useCheckContext("Dropdown Context", DropdownContext)
    const [mounted, setMounted] = useState(false)
@@ -105,6 +64,47 @@ function Content({ children, className, addTop = 0 }: ContentProps) {
       </div>,
       document.body,
    )
+}
+
+interface DropdownProps extends PropsWithChildren<WithClassName> {
+   value?: string
+   onChange?: (value: string) => void
+   onClick?: () => void
+}
+
+function Dropdown({ className, children, value, onChange, onClick }: DropdownProps) {
+   const [isOpen, setIsOpen] = useState(false)
+   const dropdownRef = useRef(null)
+
+   const select = (val: string) => {
+      onChange?.(val)
+   }
+
+   const onItemClick = () => {
+      setIsOpen(prev => !prev)
+      onClick?.()
+   }
+
+   const ctxValue = {
+      isOpen,
+      select,
+      value,
+      onItemClick,
+      setIsOpen,
+      dropdownRef,
+   }
+
+   return (
+      <DropdownContext.Provider value={ctxValue}>
+         <div className={`${styles.dropdown} ${className}`} ref={dropdownRef}>
+            {children}
+         </div>
+      </DropdownContext.Provider>
+   )
+}
+
+interface ContentProps extends PropsWithChildren<WithClassName> {
+   addTop?: number
 }
 
 Dropdown.Item = Item

@@ -1,9 +1,10 @@
 import styles from "./Day.module.css"
 import { ChevronIcon } from "@/UI/Icons/Icons"
-import { TaskList } from "../TaskList/TaskList"
+import { TasksList } from "../TasksList/TasksList"
 import { useTranslation } from "@/hooks/useTranslation"
 import clsx from "clsx"
 import { useGetWidth } from "@/hooks/useGetWidth"
+import { ITask } from "@/types/task"
 
 function MobileDate() {
    return (
@@ -14,6 +15,21 @@ function MobileDate() {
       </div>
    )
 }
+
+const date = new Date()
+
+const tasks: ITask[] = [
+   {
+      name: "Зробити домашнє завдання",
+      description: null,
+      completed: false,
+      project: "Study",
+      priority: 1,
+      scheduledFor: null,
+      createdAt: date.getDate(),
+      completedAt: null,
+   },
+]
 
 export function Day() {
    const t = useTranslation("ua")
@@ -29,7 +45,7 @@ export function Day() {
             </h3>
             <p className={styles.counter}>{t("tasksCompleted", { completed: 2, total: 9 })}</p>
          </header>
-         <TaskList />
+         <TasksList tasks={tasks} />
       </div>
    )
 }

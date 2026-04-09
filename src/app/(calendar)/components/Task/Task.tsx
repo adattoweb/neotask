@@ -1,10 +1,13 @@
-import styles from "./TaskList.module.css"
+import styles from "./Task.module.css"
+
 import { useState } from "react"
-import { CheckMarkIcon, ClockIcon } from "@/UI/Icons/Icons"
-import { Footer } from "./Footer"
-import { TaskForm } from "../TaskForm/TaskForm"
 import { Menu, Edit, Duplicate, Remove, PriorityList } from "@/UI/Menu/Menu"
+import { CheckMarkIcon, ClockIcon } from "@/UI/Icons/Icons"
 import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
+
+import { Footer } from "./Footer"
+import { TaskForm } from "./TaskForm"
+import { TaskProps } from "@/types/task"
 
 interface CheckMarkCircleProps {
    isCompleted: boolean
@@ -43,38 +46,35 @@ function CheckMarkCircle({ isCompleted, setIsCompleted, setIsVisible }: CheckMar
    )
 }
 
-export function Task() {
-   const [isCompleted, setIsCompleted] = useState(false)
-   const [isVisible, setIsVisible] = useState(true)
+export function Task({ name, description, completed, project, priority, scheduledFor }: TaskProps) {
+   const [isCompleted, setIsCompleted] = useState(completed)
+   const [isVisible, setIsVisible] = useState(true) // у майбутньому будемо фільтрувати за параметром у календарю
    const [isEdit, setIsEdit] = useState(false)
-
-   const data = {
-      name: "SKIBIDI TASK",
-      description: "I need to do something...",
-   }
 
    if (!isVisible) return null
 
    return isEdit ? (
-      <TaskForm className={styles.form} isOpen={isEdit} setIsOpen={setIsEdit} defaultData={data} />
+      <TaskForm className={styles.form} isOpen={isEdit} setIsOpen={setIsEdit} />
    ) : (
       <li className={`${styles.task} bg-alpha br-alpha ${isCompleted ? "fade-out" : ""}`}>
          <CheckMarkCircle isCompleted={isCompleted} setIsCompleted={setIsCompleted} setIsVisible={setIsVisible} />
          <div className={styles.content}>
-            <h4 className={styles.name}>{data.name}</h4>
-            <p className={styles.description}>{data.description}</p>
+            <h4 className={styles.name}>{name}</h4>
+            <p className={styles.description}>{description}</p>
             <Footer>
-               <ProjectDropdown />
+               <ProjectDropdown project={project} />
                <Menu>
                   <Edit onClick={() => setIsEdit(true)} />
                   <Duplicate />
-                  <PriorityList />
+                  <PriorityList priority={priority} />
                   <Remove />
                </Menu>
-               <div className={styles.time}>
-                  <ClockIcon />
-                  <p>16:00</p>
-               </div>
+               {scheduledFor != null && (
+                  <div className={styles.time}>
+                     <ClockIcon />
+                     <p>{scheduledFor}</p>
+                  </div>
+               )}
             </Footer>
          </div>
       </li>

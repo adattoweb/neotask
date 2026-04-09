@@ -1,4 +1,4 @@
-import { Translations } from "@/types/types";
+import { Translations } from "@/types/types"
 
 export const en: Translations = {
    lang: "en",
@@ -58,11 +58,14 @@ export const en: Translations = {
    friday: "Friday",
    saturday: "Saturday",
    sunday: "Sunday",
-   informationDescription: "Neotask is a web-based time management tool designed to help you organize your day more efficiently, track your time, and stay motivated to complete tasks. The service combines ease of use with practical planning tools, making managing your time clear, convenient, and enjoyable. With Neotask, you can structure your tasks, focus on what matters, and gradually build productive habits.",
+   informationDescription:
+      "Neotask is a web-based time management tool designed to help you organize your day more efficiently, track your time, and stay motivated to complete tasks. The service combines ease of use with practical planning tools, making managing your time clear, convenient, and enjoyable. With Neotask, you can structure your tasks, focus on what matters, and gradually build productive habits.",
    customization: "Customization",
-   customizationDescription: "Neotask allows you to personalize the interface by setting your own background image. Go to the themes tab where several ways to change the background are available. You can select one of the ready-made images already in the system. You can also upload your own image directly from your device. Additionally, you can set a background via a link to an image. Scroll to the bottom of the themes page to the custom backgrounds section and click the block with the plus sign. A modal will open where you can paste the direct link to the image file. It is recommended to upload your photo to an image hosting service such as Imgur or any similar site, and paste the direct link to the image. Video guide: link will be here.",
+   customizationDescription:
+      "Neotask allows you to personalize the interface by setting your own background image. Go to the themes tab where several ways to change the background are available. You can select one of the ready-made images already in the system. You can also upload your own image directly from your device. Additionally, you can set a background via a link to an image. Scroll to the bottom of the themes page to the custom backgrounds section and click the block with the plus sign. A modal will open where you can paste the direct link to the image file. It is recommended to upload your photo to an image hosting service such as Imgur or any similar site, and paste the direct link to the image. Video guide: link will be here.",
    ourGoal: "Our goal",
-   ourGoalDescription: "Neotask is created to make time management a simple, clear, and comfortable daily tool. Customize your space, plan wisely, and move toward your goals more consciously.",
+   ourGoalDescription:
+      "Neotask is created to make time management a simple, clear, and comfortable daily tool. Customize your space, plan wisely, and move toward your goals more consciously.",
    showTaskCount: "Show task count",
    search: "Search",
    notes: "Notes",
@@ -96,4 +99,5 @@ export const en: Translations = {
    pickADay: "Pick a day",
    custom: "Custom",
    backgroundColor: "Background color",
-};
+   withoutProject: "Without project",
+}

@@ -1,4 +1,5 @@
-.calendar{
-    box-sizing: border-box;
-    display: flex;
+.calendar {
+   box-sizing: border-box;
+   display: flex;
+   width: auto;
 }

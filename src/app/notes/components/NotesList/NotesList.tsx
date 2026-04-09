@@ -1,9 +1,9 @@
-import styles from "@/app/components/TaskList/TaskList.module.css"
-import taskStyles from "@/app/components/TaskList/TaskList.module.css"
-import formStyles from "./NotesList.module.css"
+import styles from "./NotesList.module.css"
+import taskStyles from "@/app/(calendar)/components/Task/Task.module.css"
+
 import { useState, useEffect } from "react"
 import { NoteForm } from "../NoteForm/NoteForm"
-import { Footer } from "@/app/(calendar)/components/TaskList/Footer"
+import { Footer } from "@/app/(calendar)/components/Task/Footer"
 import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 import { Menu, Edit, Remove } from "@/UI/Menu/Menu"
 import { PlusCircleIcon } from "@/UI/Icons/Icons"
@@ -32,12 +32,12 @@ export function Note() {
    }
 
    return isEdit ? (
-      <NoteForm className={styles.form} isOpen={isEdit} setIsOpen={setIsEdit} defaultData={data} />
+      <NoteForm className={taskStyles.form} isOpen={isEdit} setIsOpen={setIsEdit} defaultData={data} />
    ) : (
-      <li className={`${styles.task} ${formStyles.note} br-alpha`} onClick={onClick}>
-         <div className={styles.content}>
-            <h4 className={styles.name}>{data.title ?? "without title"}</h4>
-            <p className={styles.description}>{data.text ?? "witout text"}</p>
+      <li className={`${taskStyles.task} ${styles.note} br-alpha`} onClick={onClick}>
+         <div className={taskStyles.content}>
+            <h4 className={taskStyles.name}>{data.title ?? "without title"}</h4>
+            <p className={taskStyles.description}>{data.text ?? "witout text"}</p>
             <Footer onClick={ignoreClick}>
                <ProjectDropdown />
                <Menu>
@@ -61,7 +61,7 @@ function Add() {
    }, [isOpen])
 
    return (
-      <footer className={taskStyles.add__wrapper}>
+      <footer className={styles.add__wrapper}>
          {isVisible ? (
             <NoteForm
                className={isOpen ? "fade-in" : "fade-out"}
@@ -70,8 +70,8 @@ function Add() {
                setIsVisible={setIsVisible}
             />
          ) : (
-            <div className={`${taskStyles.add} ${isOpen ? "fade-out" : "fade-in"}`} onClick={() => setIsOpen(true)}>
-               <PlusCircleIcon className={taskStyles.icon} />
+            <div className={`${styles.add} ${isOpen ? "fade-out" : "fade-in"}`} onClick={() => setIsOpen(true)}>
+               <PlusCircleIcon className={styles.icon} />
                <p>{t("addNewNote")}</p>
             </div>
          )}
@@ -81,7 +81,7 @@ function Add() {
 
 export function NotesList() {
    return (
-      <div className={`${formStyles.list} ${styles.list}`}>
+      <div className={`${styles.list} ${styles.list}`}>
          <Note />
          <Note />
          <Note />

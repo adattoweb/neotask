@@ -1,6 +1,6 @@
-import DayForm from "@/UI/DayForm/DayForm"
-
 import styles from "@/UI/DayForm/DayForm.module.css"
+
+import DayForm from "@/UI/DayForm/DayForm"
 import { ClockDropdown } from "@/UI/DayForm/dropdowns/ClockDropdown"
 import { DateDropdown } from "@/UI/DayForm/dropdowns/DateDropdown"
 import { PriorityDropdown } from "@/UI/DayForm/dropdowns/PriorityDropdown"

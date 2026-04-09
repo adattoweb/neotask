@@ -83,7 +83,7 @@ function Footer({ className, children }: PropsWithChildren<WithClassName>) {
    )
 }
 
-function TaskForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData, children }: FormProps) {
+function DayForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData, children }: FormProps) {
    const methods = useForm<FormData>()
    const { handleSubmit, reset } = methods
    const onSubmit: SubmitHandler<FormData> = data => {
@@ -117,9 +117,9 @@ function TaskForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData
    )
 }
 
-TaskForm.Input = Input
-TaskForm.Parameters = Parameters
-TaskForm.Footer = Footer
-TaskForm.Textarea = Textarea
+DayForm.Input = Input
+DayForm.Parameters = Parameters
+DayForm.Footer = Footer
+DayForm.Textarea = Textarea
 
-export default TaskForm
+export default DayForm

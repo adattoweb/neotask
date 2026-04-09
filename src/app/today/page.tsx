@@ -4,8 +4,24 @@ import styles from "./page.module.css"
 import noteStyles from "@/app/notes/page.module.css"
 import { FormProvider, useForm } from "react-hook-form"
 import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
-import { TaskList } from "@/app/(calendar)/components/TaskList/TaskList"
+import { TasksList } from "@/app/(calendar)/components/TasksList/TasksList"
 import { useTranslation } from "@/hooks/useTranslation"
+import { ITask } from "@/types/task"
+
+const date = new Date()
+
+const tasks: ITask[] = [
+   {
+      name: "Зробити домашнє завдання",
+      description: null,
+      completed: false,
+      project: "Study",
+      priority: 1,
+      scheduledFor: null,
+      createdAt: date.getDate(),
+      completedAt: null,
+   },
+]
 
 export default function Today() {
    const methods = useForm()
@@ -16,7 +32,7 @@ export default function Today() {
             <h2 className={noteStyles.header}>
                {t("today")} <ProjectDropdown />
             </h2>
-            <TaskList className={styles.list} />
+            <TasksList className={styles.list} tasks={tasks} />
          </div>
       </FormProvider>
    )

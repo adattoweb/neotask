@@ -19,3 +19,32 @@
    background-color: rgba(255, 255, 255, 0.1);
    cursor: pointer;
 }
+
+.priority-list {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr;
+}
+.priority-item {
+   font-size: 16px;
+   padding: 8px 10px;
+   transition: 0.3s ease all;
+   cursor: pointer;
+   border-radius: var(--md-border-radius);
+   overflow: hidden;
+   user-select: none;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   gap: 5px;
+}
+
+.priority-item:hover {
+   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.priority-item svg {
+   width: 20px;
+   height: 20px;
+   margin: auto;
+}

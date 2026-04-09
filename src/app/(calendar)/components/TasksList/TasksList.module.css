@@ -1,18 +1,8 @@
-.note {
-   border-left: none;
-   border-right: none;
-   border-bottom: none;
-   border-radius: 0px !important;
-   flex: 1 1 auto;
-   padding: 10px 0px 0px 0px;
-   cursor: pointer;
-}
 .list {
-   width: 100%;
-   margin-top: 18px !important;
-}
-.list .note:first-child {
-   border: 0px;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   margin-top: 18px;
 }
 
 .add__wrapper {

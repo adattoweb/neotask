@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form"
-import styles from "./TaskList.module.css"
+import styles from "./Task.module.css"
 import { PropsWithChildren, useEffect } from "react"
 
 interface FormData {
@@ -13,11 +13,11 @@ interface FooterProps extends PropsWithChildren {
 
 export function Footer({ onClick, children }: FooterProps) {
    const methods = useForm<FormData>()
-   const priority = methods.watch("priority")
+   const priorityWatch = methods.watch("priority")
 
    useEffect(() => {
-      console.log("priority changed:", priority)
-   }, [priority])
+      console.log("priority changed:", priorityWatch)
+   }, [priorityWatch])
    return (
       <FormProvider {...methods}>
          <footer className={styles.footer} onClick={onClick}>
