@@ -4,7 +4,7 @@ import { CheckMarkIcon, ClockIcon } from "@/UI/Icons/Icons"
 import { Footer } from "./Footer"
 import { TaskForm } from "../TaskForm/TaskForm"
 import Menu from "./Menu"
-import { ProjectDropdown } from "@/components/AddForm/components/ProjectDropdown"
+import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 
 interface CheckMarkCircleProps {
    isCompleted: boolean

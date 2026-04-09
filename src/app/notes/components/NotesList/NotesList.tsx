@@ -4,7 +4,7 @@ import formStyles from "./NotesList.module.css"
 import { useState, useEffect } from "react"
 import { NoteForm } from "../NoteForm/NoteForm"
 import { Footer } from "@/app/components/TaskList/Footer"
-import { ProjectDropdown } from "@/components/AddForm/components/ProjectDropdown"
+import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 import Menu from "@/app/components/TaskList/Menu"
 import { PlusCircleIcon } from "@/UI/Icons/Icons"
 import { useTranslation } from "@/hooks/useTranslation"
@@ -23,8 +23,8 @@ export function Note() {
       React hook form - це бібліотека на реакт, що дозволяє легко керувати та створювати форми що відповідають принципам масштабован`,
    }
 
-   const toggleModal = useModalsStore((store) => store.toggleModal)
-   const setNote = useNoteStore((store) => store.setNote)
+   const toggleModal = useModalsStore(store => store.toggleModal)
+   const setNote = useNoteStore(store => store.setNote)
 
    const onClick = () => {
       toggleModal("isNoteOpen")

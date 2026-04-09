@@ -1,7 +1,7 @@
 "use client"
 
 import Dropdown from "@/UI/Dropdown/Dropdown"
-import styles from "../AddForm.module.css"
+import styles from "../DayForm.module.css"
 import { ChevronIcon } from "@/UI/Icons/Icons"
 import { Controller, useFormContext } from "react-hook-form"
 

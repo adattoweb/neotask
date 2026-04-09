@@ -1,6 +1,6 @@
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { ClockIcon } from "@/UI/Icons/Icons"
-import styles from "../AddForm.module.css"
+import styles from "../DayForm.module.css"
 import { ClockPicker } from "@/UI/ClockPicker/ClockPicker"
 import type { ClockData } from "@/UI/ClockPicker/ClockPicker"
 import clsx from "clsx"

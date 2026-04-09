@@ -2,7 +2,7 @@
 
 import styles from "./page.module.css"
 import { FormProvider, useForm } from "react-hook-form"
-import { ProjectDropdown } from "@/components/AddForm/components/ProjectDropdown"
+import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 import { NotesList } from "./components/NotesList/NotesList"
 import { useTranslation } from "@/hooks/useTranslation"
 import { NoteModal } from "@/UI/Modals/NoteModal/NoteModal"

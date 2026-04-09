@@ -1,6 +1,6 @@
 "use client"
 
-import styles from "./AddForm.module.css"
+import styles from "./DayForm.module.css"
 import { CloseIcon, SendIcon } from "@/UI/Icons/Icons"
 import { FieldError, FormProvider, SubmitHandler, useForm, useFormContext } from "react-hook-form"
 import { WithClassName } from "@/types/types"
@@ -83,10 +83,10 @@ function Footer({ className, children }: PropsWithChildren<WithClassName>) {
    )
 }
 
-function AddForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData, children }: FormProps) {
+function TaskForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData, children }: FormProps) {
    const methods = useForm<FormData>()
    const { handleSubmit, reset } = methods
-   const onSubmit: SubmitHandler<FormData> = (data) => {
+   const onSubmit: SubmitHandler<FormData> = data => {
       console.log(data)
    }
 
@@ -117,9 +117,9 @@ function AddForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData,
    )
 }
 
-AddForm.Input = Input
-AddForm.Parameters = Parameters
-AddForm.Footer = Footer
-AddForm.Textarea = Textarea
+TaskForm.Input = Input
+TaskForm.Parameters = Parameters
+TaskForm.Footer = Footer
+TaskForm.Textarea = Textarea
 
-export default AddForm
+export default TaskForm

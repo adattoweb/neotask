@@ -1,5 +1,5 @@
 import Dropdown from "@/UI/Dropdown/Dropdown"
-import styles from "../AddForm.module.css"
+import styles from "../DayForm.module.css"
 import { CalendarIcon, CloseIcon } from "@/UI/Icons/Icons"
 import { DayPicker } from "react-day-picker"
 import { useState } from "react"

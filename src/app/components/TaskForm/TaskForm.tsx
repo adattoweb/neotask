@@ -1,10 +1,10 @@
-import AddForm from "@/components/AddForm/AddForm"
+import DayForm from "@/UI/DayForm/DayForm"
 
-import styles from "@/components/AddForm/AddForm.module.css"
-import { ClockDropdown } from "@/components/AddForm/components/ClockDropdown"
-import { DateDropdown } from "@/components/AddForm/components/DateDropdown"
-import { PriorityDropdown } from "@/components/AddForm/components/PriorityDropdown"
-import { ProjectDropdown } from "@/components/AddForm/components/ProjectDropdown"
+import styles from "@/UI/DayForm/DayForm.module.css"
+import { ClockDropdown } from "@/UI/DayForm/dropdowns/ClockDropdown"
+import { DateDropdown } from "@/UI/DayForm/dropdowns/DateDropdown"
+import { PriorityDropdown } from "@/UI/DayForm/dropdowns/PriorityDropdown"
+import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 import { useTranslation } from "@/hooks/useTranslation"
 import { WithClassName } from "@/types/types"
 
@@ -18,29 +18,29 @@ interface TaskForm extends WithClassName {
 export function TaskForm({ className, isOpen, setIsOpen, setIsVisible, defaultData }: TaskForm) {
    const t = useTranslation("ua")
    return (
-      <AddForm
+      <DayForm
          className={className}
          isOpen={isOpen}
          setIsOpen={setIsOpen}
          setIsVisible={setIsVisible}
          defaultData={defaultData}
       >
-         <AddForm.Input
+         <DayForm.Input
             className={styles.name}
             placeholder={t("learn5PhrasesDaily")}
             name={"name"}
             required={t("requiredField")}
             maxLength={96}
          />
-         <AddForm.Input className={styles.description} placeholder={t("description")} name={"description"} />
-         <AddForm.Parameters>
+         <DayForm.Input className={styles.description} placeholder={t("description")} name={"description"} />
+         <DayForm.Parameters>
             <DateDropdown />
             <PriorityDropdown />
             <ClockDropdown />
-         </AddForm.Parameters>
-         <AddForm.Footer>
+         </DayForm.Parameters>
+         <DayForm.Footer>
             <ProjectDropdown />
-         </AddForm.Footer>
-      </AddForm>
+         </DayForm.Footer>
+      </DayForm>
    )
 }

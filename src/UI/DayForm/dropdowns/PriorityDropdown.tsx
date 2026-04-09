@@ -1,4 +1,4 @@
-import styles from "../AddForm.module.css"
+import styles from "../DayForm.module.css"
 import dropdownStyles from "@/UI/Dropdown/Dropdown.module.css"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { FlagIcon } from "@/UI/Icons/Icons"

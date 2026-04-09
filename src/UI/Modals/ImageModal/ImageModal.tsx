@@ -1,5 +1,5 @@
 import styles from "./ImageModal.module.css"
-import formStyles from "@/components/AddForm/AddForm.module.css"
+import formStyles from "@/UI/DayForm/DayForm.module.css"
 import { forwardRef } from "react"
 import { Modals, useModalsStore } from "@/stores/useModalsStore"
 import { Modal } from "../Modal/Modal"
@@ -15,7 +15,7 @@ interface ImageModalProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const ImageModal = forwardRef<HTMLInputElement, ImageModalProps>(({ isOpen, modalKey, ...props }, ref) => {
    const t = useTranslation("en")
-   const toggleModal = useModalsStore((store) => store.toggleModal)
+   const toggleModal = useModalsStore(store => store.toggleModal)
    return (
       <Modal className={styles.modal} isOpen={isOpen} id="root">
          <div className={styles.content}>

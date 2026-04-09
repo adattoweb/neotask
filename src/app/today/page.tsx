@@ -3,7 +3,7 @@
 import styles from "./page.module.css"
 import noteStyles from "@/app/notes/page.module.css"
 import { FormProvider, useForm } from "react-hook-form"
-import { ProjectDropdown } from "@/components/AddForm/components/ProjectDropdown"
+import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 import { TaskList } from "@/app/components/TaskList/TaskList"
 import { useTranslation } from "@/hooks/useTranslation"
 

@@ -1,7 +1,7 @@
-import AddForm from "@/components/AddForm/AddForm"
+import AddForm from "@/UI/DayForm/DayForm"
 
 import styles from "@/components/AddForm/AddForm.module.css"
-import { ProjectDropdown } from "@/components/AddForm/components/ProjectDropdown"
+import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 import { WithClassName } from "@/types/types"
 
 import { useTranslation } from "@/hooks/useTranslation"
