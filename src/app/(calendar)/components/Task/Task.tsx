@@ -8,18 +8,12 @@ import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 import { Footer } from "./Footer"
 import { TaskForm } from "./TaskForm"
 import { TaskProps } from "@/types/task"
+import { taskCompletedSounds } from "@/constants/taskCompletedSounds"
 
 interface CheckMarkCircleProps {
    isCompleted: boolean
    setIsCompleted: React.Dispatch<React.SetStateAction<boolean>>
    setIsVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-export const taskCompletedSounds = {
-   "Sound One": "/audio/taskCompleted1.mp3",
-   "Sound Two": "/audio/taskCompleted2.mp3",
-   "Sound Three": "/audio/taskCompleted3.mp3",
-   "Sound Four": "/audio/taskCompleted4.mp3",
 }
 
 function CheckMarkCircle({ isCompleted, setIsCompleted, setIsVisible }: CheckMarkCircleProps) {
@@ -51,7 +45,17 @@ export function Task({ name, description, completed, project, priority, schedule
    const [isVisible, setIsVisible] = useState(true) // у майбутньому будемо фільтрувати за параметром у календарю
    const [isEdit, setIsEdit] = useState(false)
 
+   let scheduledDate = null
+   if (scheduledFor) {
+      const scheduledTime = new Date(scheduledFor)
+      scheduledDate = `${scheduledTime.getHours()}:${scheduledTime.getMinutes()}`
+   }
+
    if (!isVisible) return null
+
+   function duplicate() {}
+
+   function remove() {}
 
    return isEdit ? (
       <TaskForm className={styles.form} isOpen={isEdit} setIsOpen={setIsEdit} />
@@ -65,14 +69,14 @@ export function Task({ name, description, completed, project, priority, schedule
                <ProjectDropdown project={project} />
                <Menu>
                   <Edit onClick={() => setIsEdit(true)} />
-                  <Duplicate />
+                  <Duplicate onClick={duplicate} />
                   <PriorityList priority={priority} />
-                  <Remove />
+                  <Remove onClick={remove} />
                </Menu>
                {scheduledFor != null && (
                   <div className={styles.time}>
                      <ClockIcon />
-                     <p>{scheduledFor}</p>
+                     <p>{scheduledDate}</p>
                   </div>
                )}
             </Footer>

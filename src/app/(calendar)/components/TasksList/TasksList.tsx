@@ -13,9 +13,9 @@ export function TasksList({ className = "", tasks }: ListProps) {
    return (
       <ul className={`${styles.list} ${className}`}>
          {tasks.map(
-            t => (
+            (t, index) => (
                <Task
-                  key={t.createdAt}
+                  key={index}
                   name={t.name}
                   description={t.description}
                   completed={t.completed}
@@ -23,7 +23,7 @@ export function TasksList({ className = "", tasks }: ListProps) {
                   priority={t.priority}
                   scheduledFor={t.scheduledFor}
                />
-            ), // CREATED AT МОЖЕ І НЕ БУТИ УНІКАЛЬНИЙ KEY
+            ), // INDEX МОЖЕ І НЕ БУТИ УНІКАЛЬНИЙ KEY
          )}
          <Add />
       </ul>

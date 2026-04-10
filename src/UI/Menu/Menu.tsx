@@ -2,24 +2,25 @@ import styles from "./Menu.module.css"
 import dropdownStyles from "@/UI/Dropdown/Dropdown.module.css"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { DuplicateIcon, EditIcon, EllipsisIcon, FlagIcon, RemoveIcon } from "@/UI/Icons/Icons"
-import { Controller, useFormContext, useWatch } from "react-hook-form"
+import { Controller, useFormContext } from "react-hook-form"
 import { PropsWithChildren } from "react"
 import { WithClassName } from "@/types/types"
-
 import { useTranslation } from "@/hooks/useTranslation"
 import { PriorityType } from "@/types/task"
 import List from "../List/List"
+import { priorities } from "@/constants/priorities"
+import clsx from "clsx"
 
 type MenuProps = PropsWithChildren<WithClassName>
 
 interface MenuItem {
-   onClick?: () => void
+   onClick: () => void
 }
 
 export function Remove({ onClick }: MenuItem) {
    const t = useTranslation("ua")
    return (
-      <div className={dropdownStyles.item}>
+      <div className={dropdownStyles.item} onClick={onClick}>
          <RemoveIcon />
          <p>{t("remove")}</p>
       </div>
@@ -29,7 +30,7 @@ export function Remove({ onClick }: MenuItem) {
 export function Edit({ onClick }: MenuItem) {
    const t = useTranslation("ua")
    return (
-      <div className={dropdownStyles.item}>
+      <div className={dropdownStyles.item} onClick={onClick}>
          <EditIcon />
          <p>{t("edit")}</p>
       </div>
@@ -39,7 +40,7 @@ export function Edit({ onClick }: MenuItem) {
 export function Duplicate({ onClick }: MenuItem) {
    const t = useTranslation("ua")
    return (
-      <div className={dropdownStyles.item}>
+      <div className={dropdownStyles.item} onClick={onClick}>
          <DuplicateIcon />
          <p>{t("duplicate")}</p>
       </div>
@@ -63,21 +64,15 @@ export function PriorityList({ priority }: PriorityListProps) {
             <div {...field}>
                <h4 className={dropdownStyles.header}>{t("priority")}</h4>
                <List onChange={field.onChange} className={styles["priority-list"]}>
-                  <List.Item className={styles["priority-item"]} value="1">
-                     <FlagIcon stroke="#e12c2c" />
-                  </List.Item>
-                  <List.Item className={styles["priority-item"]} value="2">
-                     <FlagIcon stroke="#e6871a" />
-                  </List.Item>
-                  <List.Item className={styles["priority-item"]} value="3">
-                     <FlagIcon stroke="#5ec05d" />
-                  </List.Item>
-                  <List.Item className={styles["priority-item"]} value="4">
-                     <FlagIcon stroke="#5392e9" />
-                  </List.Item>
-                  <List.Item className={styles["priority-item"]} value="5">
-                     <FlagIcon stroke="#fff" />
-                  </List.Item>
+                  {priorities.map((p, idx) => (
+                     <List.Item
+                        key={idx}
+                        className={clsx(styles["priority-item"], field.value == p.priority && styles.active)}
+                        value={String(p.priority)}
+                     >
+                        <FlagIcon stroke={p.color} />
+                     </List.Item>
+                  ))}
                </List>
             </div>
          )}

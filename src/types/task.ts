@@ -1,4 +1,9 @@
 export type PriorityType = 1 | 2 | 3 | 4 | 5
+
+export interface PriorityItem {
+   priority: PriorityType
+   color: string
+}
 export type ProjectType = string | null
 
 export interface ITask {
