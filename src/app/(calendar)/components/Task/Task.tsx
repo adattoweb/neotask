@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "./Task.module.css"
 
 import { useState } from "react"
@@ -48,7 +50,7 @@ export function Task({ name, description, completed, project, priority, schedule
    let scheduledDate = null
    if (scheduledFor) {
       const scheduledTime = new Date(scheduledFor)
-      scheduledDate = `${scheduledTime.getHours()}:${scheduledTime.getMinutes()}`
+      scheduledDate = `${scheduledTime.getHours()}:${String(scheduledTime.getMinutes()).padStart(2, "0")}`
    }
 
    if (!isVisible) return null
