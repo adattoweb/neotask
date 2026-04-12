@@ -1,5 +1,5 @@
 :root {
-   --bg-blur: 6px;
+   --bg-blur: 0px;
    --blur: 30px;
 
    --bg-transparent: 0.1;
@@ -19,6 +19,8 @@
    --content-margins-sides: 20px;
    --content-with-sidebar-width: calc(100vw - var(--sidebar-width) - var(--content-margins-sides) * 2);
    --content-without-sidebar-width: calc(100vw - var(--content-margins-sides) * 2);
+
+   --accent-color: #dd932a;
 }
 
 @media screen and (max-width: 1600px) {
@@ -51,7 +53,7 @@
    max-width: 100vw;
    height: 100vh;
    max-height: 100vh;
-   background-image: url("/images/test-bg.jpg");
+   background-image: url("/images/themes/theme19.jpg");
    background-size: cover;
    background-repeat: no-repeat;
    z-index: 1;
