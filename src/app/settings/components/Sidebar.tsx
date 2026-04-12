@@ -1,9 +1,10 @@
 import styles from "../page.module.css"
 import { Checkbox } from "@/UI/Checkbox/Checkbox"
 import { useFormContext } from "react-hook-form"
-import { ClipboardIcon, MagnifyingGlassIcon, SunIcon } from "@/UI/Icons/Icons"
+import { MagnifyingGlassIcon } from "@/UI/Icons/Icons"
 import { Block } from "./Constructor/Constructor"
 import { useTranslation } from "@/hooks/useTranslation"
+import { ROUTES, ROUTESCANBEDISABLED } from "@/constants/routes"
 
 export function Sidebar() {
    const { register } = useFormContext()
@@ -17,12 +18,15 @@ export function Sidebar() {
             <Checkbox {...register("isSearchVisible")}>
                <MagnifyingGlassIcon /> <p>{t("search")}</p>
             </Checkbox>
-            <Checkbox {...register("isTodayVisible")}>
-               <SunIcon /> <p>{t("today")}</p>
-            </Checkbox>
-            <Checkbox {...register("isNotesVisible")}>
-               <ClipboardIcon /> <p>{t("notes")}</p>
-            </Checkbox>
+            {ROUTESCANBEDISABLED.map(key => {
+               const Icon = ROUTES[key].ICON
+               return (
+                  <Checkbox key={key}>
+                     {Icon !== null && <Icon />}
+                     <p>{ROUTES[key].NAME.UA}</p>
+                  </Checkbox>
+               )
+            })}
             <Checkbox {...register("isProjectsVisible")}>{t("projects")}</Checkbox>
          </Block>
       </div>

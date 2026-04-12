@@ -1,10 +1,10 @@
 import styles from "../Sidebar.module.css"
 import Link from "next/link"
 
-import { ROUTES } from "@/constants/routes"
+import { ROUTES, ROUTESINSIDEBAR } from "@/constants/routes"
 
 export interface NavItemProps {
-   Icon?: React.ElementType
+   Icon: React.ElementType | null
    title: string
    href: string
    counter?: number
@@ -41,7 +41,7 @@ const tempProjects = [
 function NavItem({ Icon, title, href, counter }: NavItemProps) {
    return (
       <Link className={styles.link} href={href} draggable={false}>
-         {Icon ? <Icon className={styles.icon} /> : <p className={styles.tag}>#</p>}
+         {Icon !== null ? <Icon className={styles.icon} /> : <p className={styles.tag}>#</p>}
          <p className={styles.title}>{title}</p>
          {counter && <p className={styles.counter}>{counter}</p>}
       </Link>
@@ -53,7 +53,7 @@ export function Navigation() {
    return (
       <nav className={styles.nav}>
          <section className={styles.section}>
-            {Object.keys(ROUTES).map((key) => (
+            {ROUTESINSIDEBAR.map(key => (
                <NavItem
                   key={ROUTES[key].ROUTE}
                   Icon={ROUTES[key].ICON}
@@ -66,7 +66,7 @@ export function Navigation() {
          <section className={styles.section}>
             <h2 className={styles.header}>Проєкти</h2>
             {tempProjects.map((el, index) => (
-               <NavItem key={index} title={el.title} href={el.href} counter={el.counter} />
+               <NavItem key={index} Icon={null} title={el.title} href={el.href} counter={el.counter} />
             ))}
          </section>
       </nav>

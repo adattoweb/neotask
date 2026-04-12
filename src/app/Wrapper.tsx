@@ -3,10 +3,12 @@ import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 import { Sidebar } from "@/UI/Sidebar/Sidebar"
 import clsx from "clsx"
+import { ROUTES } from "@/constants/routes"
 
 export function ClientWrapper({ children }: { children: ReactNode }) {
    const pathname = usePathname()
-   const withSidebar = !pathname.startsWith("/settings") && !pathname.startsWith("/login")
+   console.log(pathname)
+   const withSidebar = pathname !== ROUTES.SETTINGS.ROUTE && pathname !== ROUTES.LOGIN.ROUTE
 
    return (
       <div className="wrapper" id="root">

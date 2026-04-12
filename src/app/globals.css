@@ -200,14 +200,18 @@
 }
 
 /* NOT FOUND */
+
 .notfound {
-   width: 100%;
-   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.content:has(.notfound) {
    display: flex;
    justify-content: center;
    align-items: center;
-   flex-direction: column;
-   gap: 8px;
 }
 
 .notfound__header {
