@@ -16,7 +16,9 @@
    --top: 40px;
    --bottom: 40px;
 
-   --content-width: calc(100vw - 40px);
+   --content-margins-sides: 20px;
+   --content-with-sidebar-width: calc(100vw - var(--sidebar-width) - var(--content-margins-sides) * 2);
+   --content-without-sidebar-width: calc(100vw - var(--content-margins-sides) * 2);
 }
 
 @media screen and (max-width: 1600px) {
@@ -78,11 +80,11 @@
 }
 
 .content {
-   width: calc(100vw - var(--sidebar-width) - 40px);
+   width: var(--content-with-sidebar-width);
    position: absolute;
    top: var(--top);
    bottom: var(--bottom);
-   right: 20px;
+   right: var(--content-margins-sides);
    border-radius: var(--full-border-radius) !important;
    box-sizing: border-box;
    overflow-y: scroll;
@@ -92,12 +94,12 @@
 
 .content::before {
    content: "";
+   width: var(--content-with-sidebar-width);
    transition: 0.5s ease width;
    position: fixed;
    top: var(--top);
    bottom: var(--bottom);
-   right: 20px;
-   width: calc(100vw - var(--sidebar-width) - 40px);
+   right: var(--content-margins-sides);
    backdrop-filter: blur(var(--blur));
    pointer-events: none;
    z-index: -1;
@@ -114,7 +116,13 @@
 }
 
 .content.without {
-   width: auto !important;
+   width: var(--content-without-sidebar-width);
+   left: var(--content-margins-sides);
+}
+
+.wrapper.close .content,
+.wrapper.close .content::before {
+   width: var(--content-without-sidebar-width);
 }
 
 /* MOBILE ANIMATIONS */
@@ -134,7 +142,7 @@
 
 @keyframes ContentOut {
    0% {
-      width: var(--content-width);
+      width: var(--content-without-sidebar-width);
    }
    100% {
       transform: translateX(100px);
@@ -148,16 +156,8 @@
       width: 0px;
    }
    100% {
-      width: var(--content-width);
+      width: var(--content-without-sidebar-width);
    }
-}
-
-.wrapper.close .content {
-   width: var(--content-width);
-}
-
-.wrapper.close .content::before {
-   width: var(--content-width);
 }
 
 @media screen and (max-width: 380px) {
