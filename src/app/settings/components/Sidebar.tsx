@@ -2,7 +2,7 @@ import styles from "../page.module.css"
 import { Checkbox } from "@/UI/Checkbox/Checkbox"
 import { useFormContext } from "react-hook-form"
 import { MagnifyingGlassIcon } from "@/UI/Icons/Icons"
-import { Block } from "./Constructor/Constructor"
+import { Block } from "@/UI/FormUI/Constructor"
 import { useTranslation } from "@/hooks/useTranslation"
 import { ROUTES, ROUTESCANBEDISABLED } from "@/constants/routes"
 

@@ -1,6 +1,6 @@
 import styles from "../page.module.css"
 import { useTranslation } from "@/hooks/useTranslation"
-import { Block, Header } from "./Constructor/Constructor"
+import { Block, Header } from "@/UI/FormUI/Constructor"
 import { DateFormatDropdown } from "./Dropdowns/DateFormatDropdown"
 import { LanguageDropdown } from "./Dropdowns/LanguageDropdown"
 import { ScreenDropdown } from "./Dropdowns/ScreenDropdown"

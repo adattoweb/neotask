@@ -1,14 +1,15 @@
 "use client"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 import styles from "./page.module.css"
-import clsx from "clsx";
-import { Block, Button, Header, Input } from "@/app/settings/components/Constructor/Constructor";
+import clsx from "clsx"
+import { Block, Header, Input } from "@/UI/FormUI/Constructor"
+import { Button } from "@/UI/CommonUI/Constructor"
 
 export default function Login() {
-   const methods = useForm<FormData>();
+   const methods = useForm<FormData>()
    const { handleSubmit } = methods
 
-   const onSubmit: SubmitHandler<FormData> = (data) => {
+   const onSubmit: SubmitHandler<FormData> = data => {
       console.log(data)
    }
 
@@ -24,12 +25,12 @@ export default function Login() {
                   </Block>
                   <Block>
                      <Header>Password</Header>
-                     <Input className={styles.input} name="password" type="password"/>
-                     <a href="#" className={styles.reset}>Забули пароль?</a>
+                     <Input className={styles.input} name="password" type="password" />
+                     <a href="#" className={styles.reset}>
+                        Забули пароль?
+                     </a>
                   </Block>
-                  <Button className={styles.button}>
-                     Увійти
-                  </Button>
+                  <Button className={styles.button}>Увійти</Button>
                </div>
             </form>
          </div>

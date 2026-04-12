@@ -1,0 +1,6 @@
+.button {
+   padding: 6px 18px;
+   border-radius: var(--md-border-radius);
+   cursor: pointer;
+   transition: 0.15s ease all;
+}

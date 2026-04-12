@@ -1,6 +1,6 @@
 import styles from "../page.module.css"
 import Range from "@/UI/Range/Range"
-import { Block, Grid, Header, Picture, ThemesAdd } from "./Constructor/Constructor"
+import { Block, Grid, Header, Picture, ThemesAdd } from "@/UI/FormUI/Constructor"
 import { ThemeDropdown } from "./Dropdowns/ThemeDropdown"
 import { useTranslation } from "@/hooks/useTranslation"
 import { useFormContext } from "react-hook-form"

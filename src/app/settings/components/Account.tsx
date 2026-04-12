@@ -1,5 +1,5 @@
 import styles from "../page.module.css"
-import { Block, Header, Input, PhotoEditor, Paragraph, Button, HiddenInput } from "./Constructor/Constructor"
+import { Block, Header, Input, PhotoEditor, Paragraph, Button, HiddenInput } from "@/UI/FormUI/Constructor"
 import { useTranslation } from "@/hooks/useTranslation"
 
 export function Account() {
@@ -14,13 +14,14 @@ export function Account() {
          </Block>
          <Block>
             <Header>{t("email")}</Header>
-            <HiddenInput name="email" maxLength={128}>
+            <HiddenInput name="email" maxLength={128} type="text">
                {t("changeEmail")}
             </HiddenInput>
          </Block>
          <Block>
             <Header>{t("password")}</Header>
-            <HiddenInput name="password" maxLength={128}>
+            <HiddenInput name="password" maxLength={128} type="text">
+               {/*В МАЙБУТНЬОМУ ТРЕБА СТВОРИТИ ОКРЕМИЙ КОМПОНЕНТ ДЛЯ ПАРОЛЯ */}
                {t("changePassword")}
             </HiddenInput>
          </Block>

@@ -1,5 +1,5 @@
 import styles from "../page.module.css"
-import { Block, Header, Paragraph } from "./Constructor/Constructor"
+import { Block, Header, Paragraph } from "@/UI/FormUI/Constructor"
 
 import { useTranslation } from "@/hooks/useTranslation"
 
