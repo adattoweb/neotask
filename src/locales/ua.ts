@@ -103,4 +103,5 @@ export const ua: Translations = {
    accentColor: "Акцент кольор",
    accentColorActive: "Активний акцент кольор",
    exampleButton: "Приклад кнопки",
+   completedTasksView: "Відображення виконанних задач",
 }

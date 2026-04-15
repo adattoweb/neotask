@@ -22,6 +22,8 @@ export function TasksList({ className = "", tasks }: ListProps) {
                   project={t.project}
                   priority={t.priority}
                   scheduledFor={t.scheduledFor}
+                  completedAt={t.completedAt}
+                  createdAt={t.createdAt}
                />
             ), // INDEX МОЖЕ І НЕ БУТИ УНІКАЛЬНИЙ KEY
          )}

@@ -1,0 +1,111 @@
+import { IDay } from "@/types/day"
+
+const now = new Date()
+
+export const days: IDay[] = [
+   {
+      date: now.getTime(),
+      tasks: [
+         {
+            name: "Погладити кота",
+            description: null,
+            completed: true,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: now.getTime(),
+         },
+         {
+            name: "Погладити кота",
+            description: null,
+            completed: true,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: now.getTime(),
+         },
+         {
+            name: "Погладити кота",
+            description: null,
+            completed: false,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: null,
+         },
+      ],
+   },
+   {
+      date: now.getTime(),
+      tasks: [
+         {
+            name: "Погладити кота",
+            description: null,
+            completed: true,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: now.getTime(),
+         },
+         {
+            name: "Погладити кота",
+            description: null,
+            completed: true,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: now.getTime(),
+         },
+         {
+            name: "Погладити кота",
+            description: null,
+            completed: false,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: null,
+         },
+      ],
+   },
+   {
+      date: now.getTime(),
+      tasks: [
+         {
+            name: "Погладити кота",
+            description: "Погладити кота і отримати задоволення",
+            completed: true,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: now.getTime(),
+         },
+         {
+            name: "Погладити кота",
+            description: null,
+            completed: true,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: now.getTime(),
+         },
+         {
+            name: "Погладити кота",
+            description: null,
+            completed: false,
+            project: null,
+            priority: 1,
+            scheduledFor: now.getTime(),
+            createdAt: now.getTime(),
+            completedAt: null,
+         },
+      ],
+   },
+]

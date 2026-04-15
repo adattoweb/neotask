@@ -9,8 +9,10 @@ import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 
 import { Footer } from "./Footer"
 import { TaskForm } from "./TaskForm"
-import { TaskProps } from "@/types/task"
+import { ITask } from "@/types/task"
 import { taskCompletedSounds } from "@/constants/taskCompletedSounds"
+import clsx from "clsx"
+import { getTime } from "@/helpers/getTime"
 
 interface CheckMarkCircleProps {
    isCompleted: boolean
@@ -42,18 +44,22 @@ function CheckMarkCircle({ isCompleted, setIsCompleted, setIsVisible }: CheckMar
    )
 }
 
-export function Task({ name, description, completed, project, priority, scheduledFor }: TaskProps) {
+export function Task({ name, description, completed, project, priority, scheduledFor, completedAt }: ITask) {
+   const getCompletedTasksView = "crossed"
+   const isCrossed = getCompletedTasksView === "crossed"
+   const isHidden = getCompletedTasksView === "hidden"
+   const isShowed = getCompletedTasksView === "showed"
    const [isCompleted, setIsCompleted] = useState(completed)
    const [isVisible, setIsVisible] = useState(true) // у майбутньому будемо фільтрувати за параметром у календарю
    const [isEdit, setIsEdit] = useState(false)
 
    let scheduledDate = null
    if (scheduledFor) {
-      const scheduledTime = new Date(scheduledFor)
-      scheduledDate = `${scheduledTime.getHours()}:${String(scheduledTime.getMinutes()).padStart(2, "0")}`
+      scheduledDate = getTime(scheduledFor)
    }
 
-   if (!isVisible) return null
+   if (completed && isHidden) return null
+   if (!isVisible && isHidden) return null
 
    function duplicate() {}
 
@@ -62,7 +68,13 @@ export function Task({ name, description, completed, project, priority, schedule
    return isEdit ? (
       <TaskForm className={styles.form} isOpen={isEdit} setIsOpen={setIsEdit} />
    ) : (
-      <li className={`${styles.task} bg-alpha br-alpha ${isCompleted ? "fade-out" : ""}`}>
+      <li
+         className={clsx(
+            styles.task,
+            "bg-alpha br-alpha",
+            isCompleted && isHidden ? "fade-out" : isCompleted && getCompletedTasksView === "crossed" && styles.crossed,
+         )}
+      >
          <CheckMarkCircle isCompleted={isCompleted} setIsCompleted={setIsCompleted} setIsVisible={setIsVisible} />
          <div className={styles.content}>
             <h4 className={styles.name}>{name}</h4>
@@ -78,7 +90,7 @@ export function Task({ name, description, completed, project, priority, schedule
                {scheduledFor != null && (
                   <div className={styles.time}>
                      <ClockIcon />
-                     <p>{scheduledDate}</p>
+                     <p>{isCompleted && !isHidden ? getTime(completedAt) : scheduledDate}</p>
                   </div>
                )}
             </Footer>

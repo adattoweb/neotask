@@ -51,20 +51,25 @@
    padding: 0px 40px 0px 0px;
 }
 
-.content .name,
-.content .description {
+.name,
+.description {
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
 }
 
-.content .name {
+.task.crossed .name,
+.task.crossed .description {
+   text-decoration: line-through;
+}
+
+.name {
    font-size: 16px;
    font-family: var(--font-montserrat-alternates);
    font-weight: 400;
 }
 
-.content .description {
+.description {
    font-size: 14px;
    font-weight: 300;
    color: #d4d4d4;

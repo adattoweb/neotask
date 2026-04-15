@@ -6,6 +6,7 @@ import { LanguageDropdown } from "./Dropdowns/LanguageDropdown"
 import { ScreenDropdown } from "./Dropdowns/ScreenDropdown"
 import { StartWeekDropdown } from "./Dropdowns/StartWeekDropdown"
 import { TimeFormatDropdown } from "./Dropdowns/TimeFormatDropdown"
+import { CompletedTasksViewDropdown } from "./Dropdowns/CompletedTasksViewDropdown"
 
 export function General() {
    const t = useTranslation("ua")
@@ -30,6 +31,10 @@ export function General() {
          <Block>
             <Header>{t("startWeekFrom")}</Header>
             <StartWeekDropdown />
+         </Block>
+         <Block>
+            <Header>{t("completedTasksView")}</Header>
+            <CompletedTasksViewDropdown />
          </Block>
       </div>
    )

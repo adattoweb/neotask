@@ -4,7 +4,7 @@ import { TasksList } from "../TasksList/TasksList"
 import { useTranslation } from "@/hooks/useTranslation"
 import clsx from "clsx"
 import { useGetWidth } from "@/hooks/useGetWidth"
-import { ITask } from "@/types/task"
+import { IDay } from "@/types/day"
 
 function MobileDate() {
    return (
@@ -16,42 +16,7 @@ function MobileDate() {
    )
 }
 
-const date = new Date()
-
-const tasks: ITask[] = [
-   {
-      name: "Зробити домашнє завдання",
-      description: null,
-      completed: false,
-      project: "Study",
-      priority: 1,
-      scheduledFor: null,
-      createdAt: date.getTime(),
-      completedAt: null,
-   },
-   {
-      name: "Зробити домашнє завдання",
-      description: null,
-      completed: false,
-      project: "Study",
-      priority: 1,
-      scheduledFor: null,
-      createdAt: date.getTime(),
-      completedAt: null,
-   },
-   {
-      name: "Зробити домашнє завдання",
-      description: "123asdsd",
-      completed: false,
-      project: "Study",
-      priority: 1,
-      scheduledFor: date.getTime(),
-      createdAt: date.getTime(),
-      completedAt: null,
-   },
-]
-
-export function Day() {
+export function Day({ date, tasks }: IDay) {
    const t = useTranslation("ua")
 
    const [width] = useGetWidth()
@@ -60,9 +25,7 @@ export function Day() {
       <div className={`${styles.day} br-alpha`}>
          <header className={styles.header}>
             {width !== null && width <= 768 && <MobileDate />}
-            <h3 className={styles.date}>
-               2 {t("feb")}, {t("monday")}
-            </h3>
+            <h3 className={styles.date}>{date}</h3>
             <p className={styles.counter}>{t("tasksCompleted", { completed: 2, total: 9 })}</p>
          </header>
          <TasksList tasks={tasks} />
