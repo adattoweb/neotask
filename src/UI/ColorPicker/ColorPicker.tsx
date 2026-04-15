@@ -15,8 +15,8 @@ export function ColorPicker({ name, defaultValue }: PickerProps) {
          control={control}
          defaultValue={defaultValue}
          render={({ field }) => (
-            <div className={clsx(styles.picker__wrapper, "bg-alpha", "br-alpha")}>
-               <input className={styles.picker} {...field} type="color" />
+            <div className={clsx(styles.picker__wrapper, "bg-alpha br-alpha")}>
+               <input className={clsx(styles.picker, "br-alpha")} {...field} type="color" />
                <p className={styles.color}>{field.value}</p>
             </div>
          )}
