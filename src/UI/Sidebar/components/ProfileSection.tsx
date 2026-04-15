@@ -7,7 +7,7 @@ import Dropdown from "@/UI/Dropdown/Dropdown"
 import { useTranslation } from "@/hooks/useTranslation"
 
 export function ProfileSection() {
-   const toggleModal = useModalsStore((state) => state.toggleModal)
+   const toggleModal = useModalsStore(state => state.toggleModal)
    const t = useTranslation("ua")
 
    return (
@@ -27,13 +27,13 @@ export function ProfileSection() {
          <Dropdown.Content className={styles.profile__content}>
             <h3 className={styles.nickname}>adattoweb</h3>
             <p className={styles.counter}>0/6 {t("tasks")}</p>
-            <Link className={styles.link} Icon={SettingsIcon}>
+            <Link className={styles.link} Icon={SettingsIcon} href="/settings">
                {t("settings")}
             </Link>
             <Link className={styles.link} Icon={ChartBarIcon} onClick={() => toggleModal("isAnalyticsOpen")}>
                {t("productivity")}
             </Link>
-            <Link className={styles.link} Icon={ExitIcon}>
+            <Link className={styles.link} Icon={ExitIcon} href="/login">
                {t("logOut")}
             </Link>
          </Dropdown.Content>
