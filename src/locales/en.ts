@@ -100,4 +100,7 @@ export const en: Translations = {
    custom: "Custom",
    backgroundColor: "Background color",
    withoutProject: "Without project",
+   accentColor: "Accent color",
+   accentColorActive: "Active accent color",
+   exampleButton: "Example button",
 }

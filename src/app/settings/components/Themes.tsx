@@ -5,11 +5,17 @@ import { ThemeDropdown } from "./Dropdowns/ThemeDropdown"
 import { useTranslation } from "@/hooks/useTranslation"
 import { useFormContext } from "react-hook-form"
 import { ColorPicker } from "@/UI/ColorPicker/ColorPicker"
+import { themes } from "@/constants/themes"
+import { getCSSVariable } from "@/helpers/getCSSVariable"
+import { Button } from "@/UI/CommonUI/Constructor"
 
 export function Themes() {
    const t = useTranslation("ua")
    const { watch } = useFormContext()
    const theme = watch("themes")
+
+   const accentColor = getCSSVariable("--accent-color")
+   const accentColorActive = getCSSVariable("--accent-color-active")
 
    const isCustom = theme === "custom"
    return (
@@ -24,6 +30,19 @@ export function Themes() {
                <ColorPicker name="backgroundColor" defaultValue="#fff" />
             </Block>
          )}
+         <Block>
+            <Header>{t("accentColor")}</Header>
+            <ColorPicker name="accentColor" defaultValue={accentColor} />
+         </Block>
+         <Block>
+            <Header>{t("accentColorActive")}</Header>
+            <ColorPicker name="accentColorActive" defaultValue={accentColorActive} />
+         </Block>
+         <Block>
+            <Button withAccentColor={true} style={{ width: "300px", height: "45px" }}>
+               {t("exampleButton")}
+            </Button>
+         </Block>
          <Block>
             <Header>{t("transparent")}</Header>
             <Range name="transparent" />
@@ -43,26 +62,17 @@ export function Themes() {
          <Block>
             <Header>{t("backgroundImages")}</Header>
             <Grid>
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
+               {themes.map((el, index) => (
+                  <Picture key={index} src={el} alt="background theme image" width={150} height={100} />
+               ))}
             </Grid>
          </Block>
          <Block>
             <Header>{t("customBackgroundImages")}</Header>
             <Grid>
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
-               <Picture src="images/themes/theme11.jpg" />
+               {themes.map((el, index) => (
+                  <Picture key={index} src={el} alt="background theme image" width={150} height={100} />
+               ))}
                <ThemesAdd />
             </Grid>
          </Block>

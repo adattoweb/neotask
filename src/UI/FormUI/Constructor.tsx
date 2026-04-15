@@ -147,10 +147,22 @@ export function Grid({ className, children }: PropsWithChildren<WithClassName>) 
 interface PictureProps extends WithClassName {
    src: string
    onClick?: () => void
+   alt?: string
+   width: number
+   height: number
 }
 
-export function Picture({ className, src, onClick }: PictureProps) {
-   return <div className={clsx(styles.image, className)} style={{ backgroundImage: `url(${src})` }} onClick={onClick} />
+export function Picture({ className, src, onClick, alt = "image", width, height }: PictureProps) {
+   return (
+      <Image
+         className={clsx(styles.image, className)}
+         src={src}
+         alt={alt}
+         onClick={onClick}
+         width={width}
+         height={height}
+      />
+   )
 }
 
 export function ThemesAdd() {

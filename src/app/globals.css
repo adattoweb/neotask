@@ -20,15 +20,15 @@
    --content-with-sidebar-width: calc(100vw - var(--sidebar-width) - var(--content-margins-sides) * 2);
    --content-without-sidebar-width: calc(100vw - var(--content-margins-sides) * 2);
 
-   --accent-color: 242, 159, 51;
-   --accent-color-active: 255, 145, 0;
+   --accent-color: #cd7d48;
+   --accent-color-active: #ef7523;
 }
 
 .bg-accent {
-   background-color: rgb(var(--accent-color));
+   background-color: var(--accent-color);
 }
 .bg-accent-hover:hover {
-   background-color: rgb(var(--accent-color-active));
+   background-color: var(--accent-color-active);
 }
 .font-accent {
    color: var(--accent-color);

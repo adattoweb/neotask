@@ -100,4 +100,7 @@ export const ua: Translations = {
    custom: "Власний",
    backgroundColor: "Фоновий колір",
    withoutProject: "Без проєкту",
+   accentColor: "Акцент кольор",
+   accentColorActive: "Активний акцент кольор",
+   exampleButton: "Приклад кнопки",
 }
