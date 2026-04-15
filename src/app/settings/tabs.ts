@@ -5,6 +5,7 @@ import { General } from "./components/General"
 import { Sidebar } from "./components/Sidebar"
 import { Information } from "./components/Information"
 import { Themes } from "./components/Themes"
+import { Productivity } from "./components/Productivity"
 
 interface IItem {
    name: Record<string, string>
@@ -51,7 +52,7 @@ export const tabs: Record<TabType, IItem> = {
          ua: "Продуктивність",
       },
       icon: ChartBarIcon,
-      content: AccountIcon,
+      content: Productivity,
    },
    information: {
       name: {

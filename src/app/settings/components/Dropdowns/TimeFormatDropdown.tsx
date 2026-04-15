@@ -1,4 +1,4 @@
-import styles from "../../page.module.css"
+import styles from "./Dropdowns.module.css"
 import { Controller, useFormContext } from "react-hook-form"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { ChevronIcon } from "@/UI/Icons/Icons"
@@ -19,7 +19,7 @@ export function TimeFormatDropdown() {
                   <ChevronIcon className={styles.dropdown__chevron} />
                </Dropdown.Button>
                <Dropdown.Content className={styles.dropdown__content} addTop={6}>
-                  {times.map((el) => (
+                  {times.map(el => (
                      <Dropdown.Item key={el} value={el}>
                         {el}
                      </Dropdown.Item>

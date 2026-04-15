@@ -1,4 +1,4 @@
-import styles from "../../page.module.css"
+import styles from "./Dropdowns.module.css"
 import { Controller, useFormContext } from "react-hook-form"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { ChevronIcon } from "@/UI/Icons/Icons"
