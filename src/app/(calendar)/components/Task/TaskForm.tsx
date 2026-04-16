@@ -54,7 +54,7 @@ export function TaskForm({
          <DayForm.Input className={styles.description} placeholder={t("description")} name={"description"} />
          <DayForm.Parameters>
             <DateDropdown />
-            <PriorityDropdown />
+            <PriorityDropdown priority={priority} />
             <ClockDropdown />
          </DayForm.Parameters>
          <DayForm.Footer>

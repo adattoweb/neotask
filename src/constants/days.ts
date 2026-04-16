@@ -77,7 +77,7 @@ export const days: IDay[] = [
       timestamp: now.getTime(),
       tasks: [
          {
-            name: "Погладити кота",
+            name: "Погладити кота1",
             description: "Погладити кота і отримати задоволення",
             completed: true,
             project: null,
@@ -87,7 +87,7 @@ export const days: IDay[] = [
             completedAt: now.getTime(),
          },
          {
-            name: "Погладити кота",
+            name: "Погладити кота2",
             description: null,
             completed: true,
             project: null,
@@ -97,11 +97,11 @@ export const days: IDay[] = [
             completedAt: now.getTime(),
          },
          {
-            name: "Погладити кота",
+            name: "Погладити кота3",
             description: null,
             completed: false,
             project: null,
-            priority: 1,
+            priority: 4,
             scheduledFor: now.getTime(),
             createdAt: now.getTime(),
             completedAt: null,

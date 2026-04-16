@@ -1,15 +1,19 @@
 import styles from "../DayForm.module.css"
-import dropdownStyles from "@/UI/Dropdown/Dropdown.module.css"
+import menuStyles from "@/UI/Menu/Menu.module.css"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { FlagIcon } from "@/UI/Icons/Icons"
 import { Controller, useFormContext } from "react-hook-form"
 import { PriorityType } from "@/types/task"
+import { priorities } from "@/constants/priorities"
+
+import List from "@/UI/List/List"
+import clsx from "clsx"
 
 interface PriorityProps {
-   priority?: PriorityType
+   priority: PriorityType
 }
 
-export function PriorityDropdown({ priority = 5 }: PriorityProps) {
+export function PriorityDropdown({ priority }: PriorityProps) {
    const { control } = useFormContext()
    return (
       <Controller
@@ -22,23 +26,17 @@ export function PriorityDropdown({ priority = 5 }: PriorityProps) {
                   <FlagIcon />
                </Dropdown.Button>
                <Dropdown.Content className={styles.content}>
-                  <div className={dropdownStyles["list-grid"]}>
-                     <Dropdown.Item value="1">
-                        <FlagIcon stroke="#e12c2c" />
-                     </Dropdown.Item>
-                     <Dropdown.Item value="2">
-                        <FlagIcon stroke="#e6871a" />
-                     </Dropdown.Item>
-                     <Dropdown.Item value="3">
-                        <FlagIcon stroke="#5ec05d" />
-                     </Dropdown.Item>
-                     <Dropdown.Item value="4">
-                        <FlagIcon stroke="#5392e9" />
-                     </Dropdown.Item>
-                     <Dropdown.Item value="5">
-                        <FlagIcon stroke="#fff" />
-                     </Dropdown.Item>
-                  </div>
+                  <List onChange={field.onChange} className={menuStyles["priority-list"]}>
+                     {priorities.map((p, idx) => (
+                        <List.Item
+                           key={idx}
+                           className={clsx(menuStyles["priority-item"], field.value == p.priority && menuStyles.active)}
+                           value={String(p.priority)}
+                        >
+                           <FlagIcon stroke={p.color} />
+                        </List.Item>
+                     ))}
+                  </List>
                </Dropdown.Content>
             </Dropdown>
          )}
