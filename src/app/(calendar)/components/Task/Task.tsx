@@ -44,7 +44,7 @@ function CheckMarkCircle({ isCompleted, setIsCompleted, setIsVisible }: CheckMar
    )
 }
 
-export function Task({ name, description, completed, project, priority, scheduledFor, completedAt }: ITask) {
+export function Task({ name, description, completed, project, priority, scheduledFor, completedAt, createdAt }: ITask) {
    const getCompletedTasksView: TaskView = "crossed"
    const isHidden = getCompletedTasksView === "hidden"
    const [isCompleted, setIsCompleted] = useState(completed)
@@ -64,7 +64,17 @@ export function Task({ name, description, completed, project, priority, schedule
    function remove() {}
 
    return isEdit ? (
-      <TaskForm className={styles.form} isOpen={isEdit} setIsOpen={setIsEdit} />
+      <TaskForm
+         className={styles.form}
+         isOpen={isEdit}
+         setIsOpen={setIsEdit}
+         name={name}
+         description={description}
+         completed={completed}
+         project={project}
+         priority={priority}
+         scheduledFor={scheduledFor}
+      />
    ) : (
       <li
          className={clsx(

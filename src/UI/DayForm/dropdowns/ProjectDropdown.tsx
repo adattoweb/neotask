@@ -18,11 +18,14 @@ export function ProjectDropdown({ project = null }: ProjectDropdownProps) {
       <Controller
          name="project"
          control={control}
-         defaultValue={project}
          render={({ field }) => (
             <Dropdown value={field.value} onChange={field.onChange}>
                <Dropdown.Button className={styles.project} needToRotating={true}>
-                  <p className={styles.project__name}>{project !== null ? project : t("withoutProject")}</p>
+                  <p className={styles.project__name}>
+                     {field.value !== null && field.value && field.value.length !== 0
+                        ? field.value
+                        : t("withoutProject")}
+                  </p>
                   <ChevronIcon className={styles.chevron} />
                </Dropdown.Button>
                <Dropdown.Content className={styles.content}>
