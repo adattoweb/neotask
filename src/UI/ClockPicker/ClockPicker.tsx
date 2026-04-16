@@ -1,6 +1,7 @@
 import styles from "./ClockPicker.module.css"
 import { Controller, useFormContext } from "react-hook-form"
 import clsx from "clsx"
+import { useEffect } from "react"
 
 export interface ClockData {
    hours: number
@@ -9,7 +10,6 @@ export interface ClockData {
 
 interface ClockProps {
    name: string
-   defaultData: ClockData
 }
 
 interface ItemProps {
@@ -28,7 +28,7 @@ function Item({ value, onClick, activeValue }: ItemProps) {
    )
 }
 
-export function ClockPicker({ name, defaultData }: ClockProps) {
+export function ClockPicker({ name }: ClockProps) {
    const { control, setValue, watch } = useFormContext()
    const hours = Array.from({ length: 24 }, (_, i) => i)
    const minutes = Array.from({ length: 60 }, (_, i) => i)
@@ -42,20 +42,22 @@ export function ClockPicker({ name, defaultData }: ClockProps) {
       })
    }
 
+   useEffect(() => {
+      console.log(time.hours)
+   }, [time])
+
    return (
       <Controller
          name={name}
          control={control}
-         defaultValue={defaultData}
          render={({ field }) => (
             <div className={styles.wrapper}>
                <h3 className={styles.time}>
-                  {String(time === undefined ? "12" : time.hours)?.padStart(2, "0")}:
-                  {String(time === undefined ? "00" : time.minutes)?.padStart(2, "0")}
+                  {String(time.hours)?.padStart(2, "0")}:{String(time.minutes)?.padStart(2, "0")}
                </h3>
                <div className={styles.picker}>
                   <div className={styles.hours}>
-                     {hours.map((el) => (
+                     {hours.map(el => (
                         <Item
                            key={el}
                            value={el}
@@ -65,7 +67,7 @@ export function ClockPicker({ name, defaultData }: ClockProps) {
                      ))}
                   </div>
                   <div className={styles.minutes}>
-                     {minutes.map((el) => (
+                     {minutes.map(el => (
                         <Item
                            key={el}
                            value={el}

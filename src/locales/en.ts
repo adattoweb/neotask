@@ -104,4 +104,5 @@ export const en: Translations = {
    accentColorActive: "Active accent color",
    exampleButton: "Example button",
    completedTasksView: "Completed task view",
+   notSelected: "Not Selected",
 }

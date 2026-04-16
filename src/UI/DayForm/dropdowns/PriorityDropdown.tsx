@@ -3,25 +3,19 @@ import menuStyles from "@/UI/Menu/Menu.module.css"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { FlagIcon } from "@/UI/Icons/Icons"
 import { Controller, useFormContext } from "react-hook-form"
-import { PriorityType } from "@/types/task"
 import { priorities } from "@/constants/priorities"
 
 import List from "@/UI/List/List"
 import clsx from "clsx"
 
-interface PriorityProps {
-   priority: PriorityType
-}
-
-export function PriorityDropdown({ priority }: PriorityProps) {
+export function PriorityDropdown() {
    const { control } = useFormContext()
    return (
       <Controller
          name="priority"
          control={control}
-         defaultValue={priority}
          render={({ field }) => (
-            <Dropdown value={field.value} onChange={field.onChange} className={`${styles.dropdown} bg-alpha`}>
+            <Dropdown className={`${styles.dropdown} bg-alpha`}>
                <Dropdown.Button className={styles.button}>
                   <FlagIcon />
                </Dropdown.Button>

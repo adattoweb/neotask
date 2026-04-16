@@ -33,7 +33,20 @@ export function TaskForm({
       description: description ?? "",
       project: project ?? "test",
       priority: String(priority),
-      scheduledFor: String(scheduledFor),
+      scheduledFor: {
+         date: new Date(),
+         hours: 12,
+         minutes: 0,
+      },
+   }
+
+   if (scheduledFor !== null) {
+      const date = new Date(scheduledFor)
+      defaultData.scheduledFor = {
+         date: date,
+         hours: date.getHours(),
+         minutes: date.getMinutes(),
+      }
    }
    const t = useTranslation("ua")
    return (
@@ -54,7 +67,7 @@ export function TaskForm({
          <DayForm.Input className={styles.description} placeholder={t("description")} name={"description"} />
          <DayForm.Parameters>
             <DateDropdown />
-            <PriorityDropdown priority={priority} />
+            <PriorityDropdown />
             <ClockDropdown />
          </DayForm.Parameters>
          <DayForm.Footer>

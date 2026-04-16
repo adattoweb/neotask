@@ -19,3 +19,9 @@ export interface ITask {
 
 export type TaskProps = Omit<ITask, "createdAt" | "completedAt">
 export type TaskView = "crossed" | "showed" | "hidden"
+
+export interface IScheduledFor {
+   date: Date | null
+   hours: number
+   minutes: number
+}

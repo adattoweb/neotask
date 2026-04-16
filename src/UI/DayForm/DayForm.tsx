@@ -11,7 +11,7 @@ interface FormProps extends PropsWithChildren<WithClassName> {
    isOpen: boolean
    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
    setIsVisible?: React.Dispatch<React.SetStateAction<boolean>>
-   defaultData?: Record<string, string>
+   defaultData?: Record<string, any>
 }
 
 interface InputProps extends WithClassName {
@@ -84,8 +84,10 @@ function Footer({ className, children }: PropsWithChildren<WithClassName>) {
 }
 
 function DayForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData, children }: FormProps) {
-   const methods = useForm<FormData>()
-   const { handleSubmit, reset } = methods
+   const methods = useForm<FormData>({
+      defaultValues: defaultData,
+   })
+   const { handleSubmit } = methods
    const onSubmit: SubmitHandler<FormData> = data => {
       console.log(data)
    }
@@ -93,12 +95,6 @@ function DayForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData,
    function toggleVisible() {
       if (!isOpen) setIsVisible?.(false)
    }
-
-   useEffect(() => {
-      if (defaultData !== undefined) {
-         reset(defaultData)
-      }
-   }, [])
 
    const value = { setIsOpen }
 
