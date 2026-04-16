@@ -1,6 +1,6 @@
 import { ITask } from "./task"
 
 export interface IDay {
-   date: number
+   timestamp: number
    tasks: ITask[]
 }

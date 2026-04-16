@@ -9,10 +9,10 @@ import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 
 import { Footer } from "./Footer"
 import { TaskForm } from "./TaskForm"
-import { ITask } from "@/types/task"
+import { ITask, TaskView } from "@/types/task"
 import { taskCompletedSounds } from "@/constants/taskCompletedSounds"
 import clsx from "clsx"
-import { getTime } from "@/helpers/getTime"
+import { getFormattedTime } from "@/helpers/getFormattedTime"
 
 interface CheckMarkCircleProps {
    isCompleted: boolean
@@ -45,17 +45,15 @@ function CheckMarkCircle({ isCompleted, setIsCompleted, setIsVisible }: CheckMar
 }
 
 export function Task({ name, description, completed, project, priority, scheduledFor, completedAt }: ITask) {
-   const getCompletedTasksView = "crossed"
-   const isCrossed = getCompletedTasksView === "crossed"
+   const getCompletedTasksView: TaskView = "crossed"
    const isHidden = getCompletedTasksView === "hidden"
-   const isShowed = getCompletedTasksView === "showed"
    const [isCompleted, setIsCompleted] = useState(completed)
    const [isVisible, setIsVisible] = useState(true) // у майбутньому будемо фільтрувати за параметром у календарю
    const [isEdit, setIsEdit] = useState(false)
 
    let scheduledDate = null
    if (scheduledFor) {
-      scheduledDate = getTime(scheduledFor)
+      scheduledDate = getFormattedTime(scheduledFor)
    }
 
    if (completed && isHidden) return null
@@ -90,7 +88,7 @@ export function Task({ name, description, completed, project, priority, schedule
                {scheduledFor != null && (
                   <div className={styles.time}>
                      <ClockIcon />
-                     <p>{isCompleted && !isHidden ? getTime(completedAt) : scheduledDate}</p>
+                     <p>{isCompleted && !isHidden ? getFormattedTime(completedAt) : scheduledDate}</p>
                   </div>
                )}
             </Footer>

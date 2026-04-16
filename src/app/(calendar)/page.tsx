@@ -13,11 +13,11 @@ export default function Calendar() {
          {width === null || width > 768 ? (
             <>
                {days.map(day => (
-                  <Day key={day.date} date={day.date} tasks={day.tasks} />
+                  <Day key={day.timestamp} timestamp={day.timestamp} tasks={day.tasks} />
                ))}
             </>
          ) : (
-            <Day date={days[0].date} tasks={days[0].tasks} />
+            <Day timestamp={days[0].timestamp} tasks={days[0].tasks} />
          )}
       </div>
    )

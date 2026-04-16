@@ -4,7 +4,7 @@ const now = new Date()
 
 export const days: IDay[] = [
    {
-      date: now.getTime(),
+      timestamp: now.getTime(),
       tasks: [
          {
             name: "Погладити кота",
@@ -39,7 +39,7 @@ export const days: IDay[] = [
       ],
    },
    {
-      date: now.getTime(),
+      timestamp: now.getTime(),
       tasks: [
          {
             name: "Погладити кота",
@@ -74,7 +74,7 @@ export const days: IDay[] = [
       ],
    },
    {
-      date: now.getTime(),
+      timestamp: now.getTime(),
       tasks: [
          {
             name: "Погладити кота",
