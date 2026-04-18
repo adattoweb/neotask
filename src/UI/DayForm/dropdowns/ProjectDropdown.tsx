@@ -4,14 +4,9 @@ import Dropdown from "@/UI/Dropdown/Dropdown"
 import styles from "../DayForm.module.css"
 import { ChevronIcon } from "@/UI/Icons/Icons"
 import { Controller, useFormContext } from "react-hook-form"
-import { ProjectType } from "@/types/task"
 import { useTranslation } from "@/hooks/useTranslation"
 
-interface ProjectDropdownProps {
-   project?: ProjectType
-}
-
-export function ProjectDropdown({ project = null }: ProjectDropdownProps) {
+export function ProjectDropdown() {
    const { control } = useFormContext()
    const t = useTranslation("ua")
    return (

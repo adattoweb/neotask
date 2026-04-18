@@ -13,6 +13,7 @@ import { ITask, TaskView } from "@/types/task"
 import { taskCompletedSounds } from "@/constants/taskCompletedSounds"
 import clsx from "clsx"
 import { getFormattedTime } from "@/helpers/getFormattedTime"
+import { useFormContext } from "react-hook-form"
 
 interface CheckMarkCircleProps {
    isCompleted: boolean
@@ -44,19 +45,29 @@ function CheckMarkCircle({ isCompleted, setIsCompleted, setIsVisible }: CheckMar
    )
 }
 
-export function Task({ name, description, completed, project, priority, scheduledFor, completedAt, createdAt }: ITask) {
+interface TaskProps {
+   isEdit: boolean
+   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export function Task({ isEdit, setIsEdit }: TaskProps) {
+   const { getValues } = useFormContext()
+   const [isVisible, setIsVisible] = useState(true) // у майбутньому будемо фільтрувати за параметром у календарю
    const getCompletedTasksView: TaskView = "crossed"
    const isHidden = getCompletedTasksView === "hidden"
-   const [isCompleted, setIsCompleted] = useState(completed)
-   const [isVisible, setIsVisible] = useState(true) // у майбутньому будемо фільтрувати за параметром у календарю
-   const [isEdit, setIsEdit] = useState(false)
+
+   const t = getValues()
+   console.log(t)
+
+   const [isCompleted, setIsCompleted] = useState(t.completed)
 
    let scheduledDate = null
-   if (scheduledFor) {
-      scheduledDate = getFormattedTime(scheduledFor)
+   if (t.scheduledFor) {
+      console.log(t.scheduledFor)
+      scheduledDate = getFormattedTime(t.scheduledFor.hours)
    }
 
-   if (completed && isHidden) return null
+   if (t.completed && isHidden) return null
    if (!isVisible && isHidden) return null
 
    function duplicate() {}
@@ -64,17 +75,7 @@ export function Task({ name, description, completed, project, priority, schedule
    function remove() {}
 
    return isEdit ? (
-      <TaskForm
-         className={styles.form}
-         isOpen={isEdit}
-         setIsOpen={setIsEdit}
-         name={name}
-         description={description}
-         completed={completed}
-         project={project}
-         priority={priority}
-         scheduledFor={scheduledFor}
-      />
+      <TaskForm className={styles.form} isOpen={isEdit} />
    ) : (
       <li
          className={clsx(
@@ -85,20 +86,20 @@ export function Task({ name, description, completed, project, priority, schedule
       >
          <CheckMarkCircle isCompleted={isCompleted} setIsCompleted={setIsCompleted} setIsVisible={setIsVisible} />
          <div className={styles.content}>
-            <h4 className={styles.name}>{name}</h4>
-            <p className={styles.description}>{description}</p>
+            <h4 className={styles.name}>{t.name}</h4>
+            <p className={styles.description}>{t.description}</p>
             <Footer>
-               <ProjectDropdown project={project} />
+               <ProjectDropdown />
                <Menu>
                   <Edit onClick={() => setIsEdit(true)} />
                   <Duplicate onClick={duplicate} />
-                  <PriorityList priority={priority} />
+                  <PriorityList />
                   <Remove onClick={remove} />
                </Menu>
-               {scheduledFor != null && (
+               {t.scheduledFor != null && (
                   <div className={styles.time}>
                      <ClockIcon />
-                     <p>{isCompleted && !isHidden ? getFormattedTime(completedAt) : scheduledDate}</p>
+                     <p>{isCompleted && !isHidden ? getFormattedTime(t.completedAt) : scheduledDate}</p>
                   </div>
                )}
             </Footer>

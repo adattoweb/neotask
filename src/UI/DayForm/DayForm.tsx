@@ -2,14 +2,14 @@
 
 import styles from "./DayForm.module.css"
 import { CloseIcon, SendIcon } from "@/UI/Icons/Icons"
-import { FieldError, FormProvider, SubmitHandler, useForm, useFormContext } from "react-hook-form"
+import { FieldError, SubmitHandler, useFormContext } from "react-hook-form"
 import { WithClassName } from "@/types/types"
-import { createContext, PropsWithChildren, useEffect } from "react"
+import { PropsWithChildren } from "react"
 import { useCheckContext } from "@/hooks/useCheckContext"
+import { FormContext, IFormContext } from "@/app/(calendar)/components/Task/TaskProvider"
 
 interface FormProps extends PropsWithChildren<WithClassName> {
    isOpen: boolean
-   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
    setIsVisible?: React.Dispatch<React.SetStateAction<boolean>>
    defaultData?: Record<string, any>
 }
@@ -20,12 +20,6 @@ interface InputProps extends WithClassName {
    required?: false | string
    maxLength?: number
 }
-
-interface IFormContext {
-   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const FormContext = createContext<IFormContext | null>(null)
 
 function Input({ className = "", placeholder, name, required = false, maxLength = Infinity }: InputProps) {
    const {
@@ -83,11 +77,8 @@ function Footer({ className, children }: PropsWithChildren<WithClassName>) {
    )
 }
 
-function DayForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData, children }: FormProps) {
-   const methods = useForm<FormData>({
-      defaultValues: defaultData,
-   })
-   const { handleSubmit } = methods
+function DayForm({ className = "", isOpen, setIsVisible, children }: FormProps) {
+   const { handleSubmit } = useFormContext()
    const onSubmit: SubmitHandler<FormData> = data => {
       console.log(data)
    }
@@ -96,20 +87,14 @@ function DayForm({ className = "", isOpen, setIsOpen, setIsVisible, defaultData,
       if (!isOpen) setIsVisible?.(false)
    }
 
-   const value = { setIsOpen }
-
    return (
-      <FormProvider {...methods}>
-         <FormContext.Provider value={value}>
-            <form
-               className={`${styles.form} bg-alpha br-alpha ${className}`}
-               onSubmit={handleSubmit(onSubmit)}
-               onAnimationEnd={toggleVisible}
-            >
-               {children}
-            </form>
-         </FormContext.Provider>
-      </FormProvider>
+      <form
+         className={`${styles.form} bg-alpha br-alpha ${className}`}
+         onSubmit={handleSubmit(onSubmit)}
+         onAnimationEnd={toggleVisible}
+      >
+         {children}
+      </form>
    )
 }
 

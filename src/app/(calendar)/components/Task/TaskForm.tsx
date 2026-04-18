@@ -7,56 +7,17 @@ import { PriorityDropdown } from "@/UI/DayForm/dropdowns/PriorityDropdown"
 import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 import { useTranslation } from "@/hooks/useTranslation"
 import { WithClassName } from "@/types/types"
-import { TaskProps } from "@/types/task"
 
-interface TaskForm extends WithClassName, TaskProps {
+interface TaskForm extends WithClassName {
    isOpen: boolean
-   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
    setIsVisible?: React.Dispatch<React.SetStateAction<boolean>>
    defaultData?: Record<string, string>
 }
 
-export function TaskForm({
-   className,
-   isOpen,
-   setIsOpen,
-   setIsVisible,
-   name,
-   description,
-   completed,
-   project,
-   priority,
-   scheduledFor,
-}: TaskForm) {
-   const defaultData = {
-      name: name,
-      description: description ?? "",
-      project: project ?? "test",
-      priority: String(priority),
-      scheduledFor: {
-         date: new Date(),
-         hours: 12,
-         minutes: 0,
-      },
-   }
-
-   if (scheduledFor !== null) {
-      const date = new Date(scheduledFor)
-      defaultData.scheduledFor = {
-         date: date,
-         hours: date.getHours(),
-         minutes: date.getMinutes(),
-      }
-   }
+export function TaskForm({ className, isOpen, setIsVisible }: TaskForm) {
    const t = useTranslation("ua")
    return (
-      <DayForm
-         className={className}
-         isOpen={isOpen}
-         setIsOpen={setIsOpen}
-         setIsVisible={setIsVisible}
-         defaultData={defaultData}
-      >
+      <DayForm className={className} isOpen={isOpen} setIsVisible={setIsVisible}>
          <DayForm.Input
             className={styles.name}
             placeholder={t("learn5PhrasesDaily")}

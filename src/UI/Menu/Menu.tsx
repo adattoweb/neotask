@@ -47,11 +47,11 @@ export function Duplicate({ onClick }: MenuItem) {
    )
 }
 
-interface PriorityListProps {
-   priority: PriorityType
-}
+// interface PriorityListProps {
+//    priority: PriorityType
+// }
 
-export function PriorityList({ priority }: PriorityListProps) {
+export function PriorityList() {
    const t = useTranslation("ua")
    const { control } = useFormContext()
 
@@ -59,7 +59,6 @@ export function PriorityList({ priority }: PriorityListProps) {
       <Controller
          name="priority"
          control={control}
-         defaultValue={String(priority)}
          render={({ field }) => (
             <div {...field}>
                <h4 className={dropdownStyles.header}>{t("priority")}</h4>
