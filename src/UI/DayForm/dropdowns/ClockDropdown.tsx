@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "../DayForm.module.css"
 import Dropdown from "@/UI/Dropdown/Dropdown"
 import { ClockIcon } from "@/UI/Icons/Icons"
