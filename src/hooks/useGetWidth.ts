@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 
 type UseGetWidthReturn = [number, React.Dispatch<React.SetStateAction<number>>]
 
 export function useGetWidth(): UseGetWidthReturn {
    const [width, setWidth] = useState<number>(0)
-   useEffect(() => {
+   useLayoutEffect(() => {
       const updateWidth = () => {
          setWidth(document.documentElement.clientWidth)
       }

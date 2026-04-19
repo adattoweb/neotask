@@ -7,11 +7,12 @@ import { WithClassName } from "@/types/types"
 import { PropsWithChildren } from "react"
 import { useCheckContext } from "@/hooks/useCheckContext"
 import { FormContext, IFormContext } from "@/app/(calendar)/components/Task/TaskProvider"
+import { TaskProps } from "@/types/task"
 
 interface FormProps extends PropsWithChildren<WithClassName> {
-   isOpen: boolean
+   isEdit: boolean
    setIsVisible?: React.Dispatch<React.SetStateAction<boolean>>
-   defaultData?: Record<string, any>
+   defaultData?: TaskProps
 }
 
 interface InputProps extends WithClassName {
@@ -61,13 +62,13 @@ function Parameters({ className, children }: PropsWithChildren<WithClassName>) {
 }
 
 function Footer({ className, children }: PropsWithChildren<WithClassName>) {
-   const { setIsOpen } = useCheckContext<IFormContext>("Form Context", FormContext)
+   const { setIsEdit } = useCheckContext<IFormContext>("Form Context", FormContext)
    return (
       <footer className={`${styles.footer} ${className}`}>
          {children}
          <div className={styles.buttons}>
             <div className={`${styles.close} ${styles.button}`}>
-               <CloseIcon onClick={() => setIsOpen(false)} />
+               <CloseIcon onClick={() => setIsEdit(false)} />
             </div>
             <button className={`${styles.send} ${styles.button}`}>
                <SendIcon />
@@ -77,14 +78,14 @@ function Footer({ className, children }: PropsWithChildren<WithClassName>) {
    )
 }
 
-function DayForm({ className = "", isOpen, setIsVisible, children }: FormProps) {
+function DayForm({ className = "", isEdit, setIsVisible, children }: FormProps) {
    const { handleSubmit } = useFormContext()
    const onSubmit: SubmitHandler<FormData> = data => {
       console.log(data)
    }
 
    function toggleVisible() {
-      if (!isOpen) setIsVisible?.(false)
+      if (!isEdit) setIsVisible?.(false)
    }
 
    return (

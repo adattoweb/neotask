@@ -9,32 +9,19 @@ import { ProjectDropdown } from "@/UI/DayForm/dropdowns/ProjectDropdown"
 
 import { Footer } from "./Footer"
 import { TaskForm } from "./TaskForm"
-import { ITask, TaskView } from "@/types/task"
+import { TaskView } from "@/types/task"
 import { taskCompletedSounds } from "@/constants/taskCompletedSounds"
 import clsx from "clsx"
 import { getFormattedTime } from "@/helpers/getFormattedTime"
 import { useFormContext } from "react-hook-form"
 
 interface CheckMarkCircleProps {
+   toggleCompleted: () => void
    isCompleted: boolean
-   setIsCompleted: React.Dispatch<React.SetStateAction<boolean>>
    setIsVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function CheckMarkCircle({ isCompleted, setIsCompleted, setIsVisible }: CheckMarkCircleProps) {
-   function playAudio() {
-      const audioKey: keyof typeof taskCompletedSounds = "Sound One" // у майбутньому буде якийсь запит на бдшчку
-      if (audioKey === null) return
-      const audio = new Audio(taskCompletedSounds[audioKey])
-      audio.play()
-   }
-
-   function toggleCompleted() {
-      setIsCompleted(prev => {
-         if (!prev) playAudio()
-         return !prev
-      })
-   }
+function CheckMarkCircle({ toggleCompleted, isCompleted, setIsVisible }: CheckMarkCircleProps) {
    return (
       <div
          className={`${styles.circle} ${styles.orange} ${isCompleted ? styles.active : ""}`}
@@ -51,20 +38,33 @@ interface TaskProps {
 }
 
 export function Task({ isEdit, setIsEdit }: TaskProps) {
-   const { getValues } = useFormContext()
+   const { getValues, setValue, watch } = useFormContext()
    const [isVisible, setIsVisible] = useState(true) // у майбутньому будемо фільтрувати за параметром у календарю
    const getCompletedTasksView: TaskView = "crossed"
    const isHidden = getCompletedTasksView === "hidden"
 
+   const completedAt = watch("completedAt")
+
    const t = getValues()
-   console.log(t)
 
-   const [isCompleted, setIsCompleted] = useState(t.completed)
+   const [isCompleted, setIsCompleted] = useState<boolean>(t.completed)
 
-   let scheduledDate = null
-   if (t.scheduledFor) {
-      console.log(t.scheduledFor)
-      scheduledDate = getFormattedTime(t.scheduledFor.hours)
+   function toggleCompleted() {
+      function playAudio() {
+         const audioKey: keyof typeof taskCompletedSounds = "Sound One" // у майбутньому буде якийсь запит на бдшчку
+         if (audioKey === null) return
+         const audio = new Audio(taskCompletedSounds[audioKey])
+         audio.play()
+      }
+
+      if (!isCompleted) {
+         playAudio()
+         setValue("completedAt", Date.now())
+      } else {
+         setValue("completedAt", null)
+      }
+
+      setIsCompleted(prev => !prev)
    }
 
    if (t.completed && isHidden) return null
@@ -74,8 +74,12 @@ export function Task({ isEdit, setIsEdit }: TaskProps) {
 
    function remove() {}
 
+   console.log("t.completedAt:", completedAt, isCompleted, t.name, t.scheduledFor)
+
+   const isAnyTimeExist = t.scheduledFor || completedAt
+
    return isEdit ? (
-      <TaskForm className={styles.form} isOpen={isEdit} />
+      <TaskForm className={styles.form} isEdit={isEdit} />
    ) : (
       <li
          className={clsx(
@@ -84,7 +88,7 @@ export function Task({ isEdit, setIsEdit }: TaskProps) {
             isCompleted && isHidden ? "fade-out" : isCompleted && getCompletedTasksView === "crossed" && styles.crossed,
          )}
       >
-         <CheckMarkCircle isCompleted={isCompleted} setIsCompleted={setIsCompleted} setIsVisible={setIsVisible} />
+         <CheckMarkCircle toggleCompleted={toggleCompleted} isCompleted={isCompleted} setIsVisible={setIsVisible} />
          <div className={styles.content}>
             <h4 className={styles.name}>{t.name}</h4>
             <p className={styles.description}>{t.description}</p>
@@ -96,10 +100,12 @@ export function Task({ isEdit, setIsEdit }: TaskProps) {
                   <PriorityList />
                   <Remove onClick={remove} />
                </Menu>
-               {t.scheduledFor != null && (
+               {isAnyTimeExist && (
                   <div className={styles.time}>
                      <ClockIcon />
-                     <p>{isCompleted && !isHidden ? getFormattedTime(t.completedAt) : scheduledDate}</p>
+                     <p>
+                        {isCompleted && !isHidden ? getFormattedTime(completedAt) : getFormattedTime(t?.scheduledFor)}
+                     </p>
                   </div>
                )}
             </Footer>

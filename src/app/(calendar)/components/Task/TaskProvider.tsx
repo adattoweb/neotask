@@ -10,36 +10,25 @@ interface TaskProviderProps {
 export const FormContext = createContext<IFormContext | null>(null)
 
 export interface IFormContext {
-   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function TaskProvider({ task }: TaskProviderProps) {
    const [isEdit, setIsEdit] = useState(false)
-   const defaultData = {
+   const defaultData: ITask = {
       name: task.name,
       description: task.description ?? "",
       project: task.project ?? "test",
-      priority: String(task.priority),
-      scheduledFor: {
-         date: new Date(),
-         hours: 12,
-         minutes: 0,
-      },
+      priority: task.priority,
+      scheduledFor: task.scheduledFor,
+      completed: task.completed,
+      completedAt: task.completedAt,
+      createdAt: task.createdAt,
    }
 
-   if (task.scheduledFor !== null) {
-      const date = new Date(task.scheduledFor)
-      defaultData.scheduledFor = {
-         date: date,
-         hours: date.getHours(),
-         minutes: date.getMinutes(),
-      }
-   }
+   const value = { setIsEdit }
 
-   const setIsOpen = setIsEdit
-   const value = { setIsOpen }
-
-   const methods = useForm<FormData>({
+   const methods = useForm<ITask>({
       defaultValues: defaultData,
    })
 

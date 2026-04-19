@@ -18,7 +18,7 @@ interface ItemProps {
    activeValue: number
 }
 
-type Time = "hours" | "minutes" | "seconds"
+type TimeType = "hours" | "minutes"
 
 function Item({ value, onClick, activeValue }: ItemProps) {
    return (
@@ -29,56 +29,55 @@ function Item({ value, onClick, activeValue }: ItemProps) {
 }
 
 export function ClockPicker({ name }: ClockProps) {
-   const { control, setValue, watch } = useFormContext()
+   const { control } = useFormContext()
    const hours = Array.from({ length: 24 }, (_, i) => i)
    const minutes = Array.from({ length: 60 }, (_, i) => i)
 
-   const time = watch(name)
-
-   const onClick = (typeTime: Time, value: number) => {
-      setValue(name, {
-         ...time,
-         [typeTime]: value,
-      })
+   const getNewTime = (date: Date, value: number, type: TimeType): number => {
+      if (type === "hours") {
+         date.setHours(value)
+      } else if (type === "minutes") {
+         date.setMinutes(value)
+      }
+      return date.getTime()
    }
-
-   useEffect(() => {
-      console.log(time.hours)
-   }, [time])
 
    return (
       <Controller
          name={name}
          control={control}
-         render={({ field }) => (
-            <div className={styles.wrapper}>
-               <h3 className={styles.time}>
-                  {String(time.hours)?.padStart(2, "0")}:{String(time.minutes)?.padStart(2, "0")}
-               </h3>
-               <div className={styles.picker}>
-                  <div className={styles.hours}>
-                     {hours.map(el => (
-                        <Item
-                           key={el}
-                           value={el}
-                           onClick={() => onClick("hours", el)}
-                           activeValue={field.value.hours}
-                        />
-                     ))}
-                  </div>
-                  <div className={styles.minutes}>
-                     {minutes.map(el => (
-                        <Item
-                           key={el}
-                           value={el}
-                           onClick={() => onClick("minutes", el)}
-                           activeValue={field.value.minutes}
-                        />
-                     ))}
+         render={({ field }) => {
+            const date = new Date(field.value)
+            return (
+               <div className={styles.wrapper}>
+                  <h3 className={styles.time}>
+                     {String(date.getHours())?.padStart(2, "0")}:{String(date.getMinutes())?.padStart(2, "0")}
+                  </h3>
+                  <div className={styles.picker}>
+                     <div className={styles.hours}>
+                        {hours.map(el => (
+                           <Item
+                              key={el}
+                              value={el}
+                              onClick={() => field.onChange(getNewTime(date, el, "hours"))}
+                              activeValue={date.getHours()}
+                           />
+                        ))}
+                     </div>
+                     <div className={styles.minutes}>
+                        {minutes.map(el => (
+                           <Item
+                              key={el}
+                              value={el}
+                              onClick={() => field.onChange(getNewTime(date, el, "minutes"))}
+                              activeValue={date.getMinutes()}
+                           />
+                        ))}
+                     </div>
                   </div>
                </div>
-            </div>
-         )}
+            )
+         }}
       />
    )
 }

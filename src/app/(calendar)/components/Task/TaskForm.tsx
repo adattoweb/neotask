@@ -9,15 +9,15 @@ import { useTranslation } from "@/hooks/useTranslation"
 import { WithClassName } from "@/types/types"
 
 interface TaskForm extends WithClassName {
-   isOpen: boolean
+   isEdit: boolean
    setIsVisible?: React.Dispatch<React.SetStateAction<boolean>>
    defaultData?: Record<string, string>
 }
 
-export function TaskForm({ className, isOpen, setIsVisible }: TaskForm) {
+export function TaskForm({ className, isEdit, setIsVisible }: TaskForm) {
    const t = useTranslation("ua")
    return (
-      <DayForm className={className} isOpen={isOpen} setIsVisible={setIsVisible}>
+      <DayForm className={className} isEdit={isEdit} setIsVisible={setIsVisible}>
          <DayForm.Input
             className={styles.name}
             placeholder={t("learn5PhrasesDaily")}
