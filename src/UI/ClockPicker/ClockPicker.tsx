@@ -1,7 +1,6 @@
 import styles from "./ClockPicker.module.css"
 import { Controller, useFormContext } from "react-hook-form"
 import clsx from "clsx"
-import { useEffect } from "react"
 
 export interface ClockData {
    hours: number
@@ -10,6 +9,7 @@ export interface ClockData {
 
 interface ClockProps {
    name: string
+   minuteStep?: number
 }
 
 interface ItemProps {
@@ -28,10 +28,10 @@ function Item({ value, onClick, activeValue }: ItemProps) {
    )
 }
 
-export function ClockPicker({ name }: ClockProps) {
+export function ClockPicker({ name, minuteStep = 1 }: ClockProps) {
    const { control } = useFormContext()
    const hours = Array.from({ length: 24 }, (_, i) => i)
-   const minutes = Array.from({ length: 60 }, (_, i) => i)
+   const minutes = Array.from({ length: 60 / minuteStep }, (_, i) => i * minuteStep)
 
    const getNewTime = (date: Date, value: number, type: TimeType): number => {
       if (type === "hours") {
