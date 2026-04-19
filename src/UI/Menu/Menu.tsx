@@ -47,10 +47,6 @@ export function Duplicate({ onClick }: MenuItem) {
    )
 }
 
-// interface PriorityListProps {
-//    priority: PriorityType
-// }
-
 export function PriorityList() {
    const t = useTranslation("ua")
    const { control } = useFormContext()
