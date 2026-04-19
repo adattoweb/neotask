@@ -8,11 +8,14 @@ import { useTranslation } from "@/hooks/useTranslation"
 import clsx from "clsx"
 import { capitalize } from "@/helpers/capitalize"
 import { Controller, useFormContext } from "react-hook-form"
+import { editDate } from "@/helpers/editDate"
 
 export function DateDropdown() {
    const t = useTranslation("ua")
 
    const { control } = useFormContext()
+
+   const today = new Date()
 
    return (
       <Controller
@@ -20,21 +23,27 @@ export function DateDropdown() {
          control={control}
          render={({ field }) => {
             const date = new Date(field.value)
+            const isDisplay = field.value !== null && today.toDateString() !== date.toDateString()
 
             return (
                <Dropdown className={`${styles.dropdown} bg-alpha`}>
                   <Dropdown.Button className={styles.button}>
                      <CalendarIcon />
-                     <p>
-                        {!date
-                           ? t("notSelected")
-                           : capitalize(
-                                date.toLocaleDateString(undefined, {
-                                   weekday: "long",
-                                }),
-                             )}
-                     </p>
-                     <CloseIcon className={styles.close} onClick={() => field.onChange(null)} />
+                     {isDisplay && (
+                        <p>
+                           {capitalize(
+                              date.toLocaleDateString(undefined, {
+                                 weekday: "long",
+                              }),
+                           )}
+                        </p>
+                     )}
+                     {isDisplay && (
+                        <CloseIcon
+                           className={styles.close}
+                           onClick={() => field.onChange(editDate(new Date(), date.getHours(), date.getMinutes()))}
+                        />
+                     )}
                   </Dropdown.Button>
                   <Dropdown.Content className={clsx(styles.content, "rdp-dropdown__content")}>
                      <DayPicker
@@ -45,11 +54,7 @@ export function DateDropdown() {
                         mode="single"
                         selected={field.value}
                         onSelect={newDate => field.onChange(newDate.getTime())}
-                        footer={
-                           field.value
-                              ? `${t("selected")}: ${field.value.date?.toLocaleDateString()}`
-                              : `${t("pickADay")}.`
-                        }
+                        footer={field.value ? `${t("selected")}: ${date?.toLocaleDateString()}` : `${t("pickADay")}.`}
                      />
                   </Dropdown.Content>
                </Dropdown>

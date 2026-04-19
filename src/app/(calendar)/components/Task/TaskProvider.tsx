@@ -15,10 +15,11 @@ export interface IFormContext {
 
 export function TaskProvider({ task }: TaskProviderProps) {
    const [isEdit, setIsEdit] = useState(false)
+   console.log(task)
    const defaultData: ITask = {
       name: task.name,
-      description: task.description ?? "",
-      project: task.project ?? "test",
+      description: task.description,
+      project: task.project,
       priority: task.priority,
       scheduledFor: task.scheduledFor,
       completed: task.completed,

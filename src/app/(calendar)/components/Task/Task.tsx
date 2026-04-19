@@ -86,6 +86,7 @@ export function Task({ isEdit, setIsEdit }: TaskProps) {
             styles.task,
             "bg-alpha br-alpha",
             isCompleted && isHidden ? "fade-out" : isCompleted && getCompletedTasksView === "crossed" && styles.crossed,
+            isCompleted && styles.completed,
          )}
       >
          <CheckMarkCircle toggleCompleted={toggleCompleted} isCompleted={isCompleted} setIsVisible={setIsVisible} />

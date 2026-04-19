@@ -16,7 +16,7 @@ export function ClockDropdown() {
       <Dropdown className={`${styles.dropdown} bg-alpha`}>
          <Dropdown.Button className={styles.button}>
             <ClockIcon />
-            <p className={styles.clock__time}>{time}</p>
+            {date.getSeconds() >= 1 && <p className={styles.clock__time}>{time}</p>}
          </Dropdown.Button>
          <Dropdown.Content className={clsx(styles.content, styles.clock)}>
             <ClockPicker name="scheduledFor" minuteStep={5} />

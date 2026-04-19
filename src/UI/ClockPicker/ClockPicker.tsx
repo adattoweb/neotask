@@ -1,6 +1,8 @@
 import styles from "./ClockPicker.module.css"
 import { Controller, useFormContext } from "react-hook-form"
 import clsx from "clsx"
+import { useTranslation } from "@/hooks/useTranslation"
+import { editDate } from "@/helpers/editDate"
 
 export interface ClockData {
    hours: number
@@ -42,6 +44,8 @@ export function ClockPicker({ name, minuteStep = 1 }: ClockProps) {
       return date.getTime()
    }
 
+   const t = useTranslation("ua")
+
    return (
       <Controller
          name={name}
@@ -74,6 +78,9 @@ export function ClockPicker({ name, minuteStep = 1 }: ClockProps) {
                            />
                         ))}
                      </div>
+                  </div>
+                  <div className={styles.button} onClick={() => field.onChange(editDate(date, null, null))}>
+                     {t("remove")}
                   </div>
                </div>
             )

@@ -39,3 +39,15 @@
 .item.active {
    background-color: rgba(0, 0, 0, var(--transparent));
 }
+
+.button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 6px 0px;
+   transition: 0.3s ease all;
+   cursor: pointer;
+}
+.button:hover {
+   background-color: rgba(0, 0, 0, var(--transparent));
+}

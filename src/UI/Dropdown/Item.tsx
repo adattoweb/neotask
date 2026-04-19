@@ -5,7 +5,7 @@ import { useCheckContext } from "@/hooks/useCheckContext"
 import { DropdownContext } from "./Dropdown"
 
 interface ItemProps extends PropsWithChildren<WithClassName> {
-   value: string
+   value: string | null
 }
 
 export function Item({ value, children, className }: ItemProps) {

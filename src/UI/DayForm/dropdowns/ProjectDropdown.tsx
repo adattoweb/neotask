@@ -24,6 +24,7 @@ export function ProjectDropdown() {
                   <ChevronIcon className={styles.chevron} />
                </Dropdown.Button>
                <Dropdown.Content className={styles.content}>
+                  <Dropdown.Item value={null}>{t("withoutProject")}</Dropdown.Item>
                   <Dropdown.Item value="name1">name1</Dropdown.Item>
                   <Dropdown.Item value="name2">name2</Dropdown.Item>
                   <Dropdown.Item value="name3">name3</Dropdown.Item>

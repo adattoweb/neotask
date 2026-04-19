@@ -11,7 +11,7 @@ import { Button } from "./Button"
 
 interface IContext {
    isOpen: boolean
-   select?: (val: string) => void
+   select?: (val: string | null) => void
    value?: string
    onItemClick: () => void
    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
