@@ -1,16 +1,11 @@
-import { createContext, useState } from "react"
+import { useState } from "react"
 import { Task } from "./Task"
 import { ITask } from "@/types/task"
 import { FormProvider, useForm } from "react-hook-form"
+import { FormContext } from "@/context/taskFormContext"
 
 interface TaskProviderProps {
    task: ITask
-}
-
-export const FormContext = createContext<IFormContext | null>(null)
-
-export interface IFormContext {
-   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function TaskProvider({ task }: TaskProviderProps) {
