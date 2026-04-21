@@ -4,10 +4,10 @@ import styles from "./page.module.css"
 
 import { Day } from "@/app/(calendar)/components/Day/Day"
 import { days } from "@/constants/days"
-import { useState } from "react"
+import { useGetWidth } from "@/hooks/useGetWidth"
 
 export default function Calendar() {
-   const [width, setWidth] = useState(1024) // ТИМЧАСОВО !!!
+   const [width, setWidth] = useGetWidth()
    return (
       <div className={`${styles.calendar} bg-alpha page`}>
          {width === null || width > 768 ? (

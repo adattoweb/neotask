@@ -61,6 +61,10 @@
    .wrapper {
       margin-top: 40px;
    }
+   .settings {
+      width: calc(100vw - 5vh);
+      height: 95vh;
+   }
 }
 
 @media screen and (max-width: 380px) {

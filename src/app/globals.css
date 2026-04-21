@@ -152,7 +152,7 @@
 /* MOBILE ANIMATIONS */
 @media screen and (max-width: 768px) {
    .wrapper .content {
-      animation: ContentOut 0.5s ease forwards;
+      animation: none;
    }
 
    .wrapper .content.without {
@@ -160,7 +160,7 @@
    }
 
    .wrapper.close .content {
-      animation: ContentIn 0.5s ease forwards;
+      animation: none;
    }
 }
 
@@ -190,7 +190,9 @@
    }
 
    .content {
+      left: 0px;
       right: 0px;
+      width: 100vw !important;
       border-radius: 0px !important;
       border: 0px !important;
    }
